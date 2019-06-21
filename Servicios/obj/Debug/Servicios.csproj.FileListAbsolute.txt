@@ -1,0 +1,15 @@
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\Servicios.dll.config
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\Servicios.dll
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\Servicios.pdb
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\Domain.dll
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\EntityFramework.dll
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\Domain.pdb
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\Domain.dll.config
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\EntityFramework.xml
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\obj\Debug\Servicios.csproj.CopyComplete
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\obj\Debug\Servicios.dll
+C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Servicios\obj\Debug\Servicios.pdb
