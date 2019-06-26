@@ -32,16 +32,25 @@
                         <tr>
                             <th scope="col">Descripción</th>
                             <th scope="col">Precio</th>
+                            <th scope="col">Disponible</th>
+                            <th scope="col"> </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var producto in Model.Productos.OrderBy(producto => producto.Descripcion))
                         {
-                        <tr>
-                            <td>@producto.Descripcion</td>
-                            <td>@producto.Precio</td>
-                            @*<td>@producto.Disponible</td>*@       @*Este campo falta agregarlo en todos lados para "Deshabilitar" el producto en vez de eliminarlo*@
-                        </tr>
+                            <tr>
+                                <td>@producto.Descripcion</td>
+                                <td>@producto.Precio</td>
+                                @*<td>@producto.Disponible</td>       @*Este campo falta agregarlo en todos lados para "Deshabilitar" el producto en vez de eliminarlo*@
+                                <td><a href="@Url.Action("Modificar", "Productos")" >       @*Acá llamar a la vista para modificar y deshabilitar/eliminar*@ 
+                                       class="btn btn-link"
+                                        <i class="fas fa-ellipsis-h"
+                                           data-toggle="tooltip"
+                                           title="Modificar"></i>
+                                    </a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
