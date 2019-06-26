@@ -4,7 +4,7 @@
     ViewBag.Title = "Productos";
 }
 
-@section PageScripts {
+@section scripts {
     <script type="text/javascript">
     </script>
 }
@@ -16,8 +16,9 @@
 
     <div class="row my-5">
         <div class="col-2">
-            <a class="btn btn-dark form-control" href="@Url.RouteUrl("Productos_Nuevo")">
-                Nuevo Alumno
+            <a class="btn btn-dark form-control text-right" 
+               href="@Url.Action("Nuevo","Productos")">
+                Nuevo Producto
             </a>
         </div>
     </div>
@@ -36,10 +37,11 @@
                     <tbody>
                         @foreach (var producto in Model.Productos.OrderBy(producto => producto.Descripcion))
                         {
-                            <tr>
-                                <td>@producto.Descripcion</td>
-                                <td>@producto.Precio</td>
-                            </tr>
+                        <tr>
+                            <td>@producto.Descripcion</td>
+                            <td>@producto.Precio</td>
+                            @*<td>@producto.Disponible</td>*@       @*Este campo falta agregarlo en todos lados para "Deshabilitar" el producto en vez de eliminarlo*@
+                        </tr>
                         }
                     </tbody>
                 </table>

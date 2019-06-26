@@ -45,7 +45,7 @@ namespace Restaurante.Controllers
         [Route("Nuevo", Name = "Productos_Nuevo")]
         public ActionResult Nuevo()
         {
-            return View( new NuevoProductoViewModel() );
+            return View( new NuevoProductoViewModel() { } );
         }
 
         [HttpPost]
@@ -67,7 +67,7 @@ namespace Restaurante.Controllers
                         precio: model.Precio
                         );
 
-                    return RedirectToRoute("Productos_Index");
+                    return RedirectToAction("Index");
                 }
             }
             catch (Exception ex)

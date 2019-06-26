@@ -11,6 +11,6 @@ namespace Domain
         public int Id { get; set; }
         public string Nombre { set; get; }
         public string Apellido { get; set; }
-        public string Legajo { get; set; }
+        public int Legajo { get; set; }
     }
 }

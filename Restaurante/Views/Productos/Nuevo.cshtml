@@ -1,10 +1,10 @@
 ﻿@model Restaurante.ViewModels.Productos.NuevoProductoViewModel
 
 @{
-    ViewBag.Title = "Nuevo Producto";
+    ViewBag.Title = "Nuevo";
 }
 
-@section PageScripts {
+@section scripts {
     <script type="text/javascript">
     </script>
 }
@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="offset-3 col-6">
-            @using (Html.BeginRouteForm("Productos_Nuevo", FormMethod.Post))
+            @using (Html.BeginForm("Nuevo","Productos", FormMethod.Post))
             {
                 <div class="form-group">
                     <label for="Descripción">Descripcion</label>
@@ -33,7 +33,7 @@
                     Confirmar
                 </button>
                 <a class="btn btn-outline-dark"
-                   href="@Url.RouteUrl("Productos_Index")">
+                   href="@Url.Action("Index","Productos")">
                     Cancelar
                 </a>
             }

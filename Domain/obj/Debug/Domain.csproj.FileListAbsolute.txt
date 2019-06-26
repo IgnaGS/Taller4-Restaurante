@@ -5,3 +5,10 @@ C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Domain\bin\
 C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Domain\bin\Debug\Domain.pdb
 C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Domain\obj\Debug\Domain.dll
 C:\Users\Nacho\Documents\Visual Studio 2019\source\repos\Restaurante\Domain\obj\Debug\Domain.pdb
+C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\bin\Debug\Domain.dll.config
+C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\bin\Debug\Domain.dll
+C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\bin\Debug\Domain.pdb
+C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\obj\Debug\Domain.dll
+C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\obj\Debug\Domain.pdb
