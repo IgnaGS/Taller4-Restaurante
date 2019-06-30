@@ -11,8 +11,8 @@ namespace Servicios.Interfaces
     {
         IEnumerable<Producto> ObtenerProductos();
 
-        void AddProducto(string descripcion, double precio);
+        void AddProducto(string descripcion, decimal precio, string disponible);
 
-        void UpdateProducto(int id, string descripcion, double precio);
+        void UpdateProducto(int id, string descripcion, decimal precio, string disponible);
     }
 }

@@ -7,8 +7,9 @@ namespace Restaurante.ViewModels.Productos
 {
     public class NuevoProductoViewModel
     {
-        public string Descripcion { set; get; }
-        public double Precio { set; get; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public string Disponible { get; set; }
 
         public NuevoProductoViewModel()
         {

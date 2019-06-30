@@ -25,8 +25,8 @@ namespace Servicios.DB.Migrations
 
             #region Productos Seed
 
-            db.Productos.AddOrUpdate(new Producto() { Descripcion = "Producto 1 Prueba", Precio = 200 });
-            db.Productos.AddOrUpdate(new Producto() { Descripcion = "Producto 2 Prueba", Precio = 120 });
+            db.Productos.AddOrUpdate(new Producto() { Descripcion = "Producto 1 Prueba", Precio = 200, Disponible = "SI" });
+            db.Productos.AddOrUpdate(new Producto() { Descripcion = "Producto 2 Prueba", Precio = 120, Disponible = "SI" });
 
             db.SaveChanges();
 

@@ -58,13 +58,49 @@ namespace Restaurante.Controllers
             if (model.Precio <= 0)
                 ModelState.AddModelError("Precio", "Debe ingresar el precio del producto");
 
+            if (string.IsNullOrWhiteSpace(model.Disponible))
+                ModelState.AddModelError("Disponible", "Debe seleccionar si el producto estará disponible o no.");
+
             try
             {
                 if (ModelState.IsValid)
                 {
                     _ServicioProducto.AddProducto(
                         descripcion: model.Descripcion,
-                        precio: model.Precio
+                        precio: model.Precio,
+                        disponible: model.Disponible
+                        );
+
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [Route("Editar", Name = "Productos_Editar")]
+        public ActionResult Editar(NuevoProductoViewModel model)
+        {
+            if (string.IsNullOrWhiteSpace(model.Descripcion))
+                ModelState.AddModelError("Descripción", "Debe ingresar la descripción del prodcuto.");
+
+            if (model.Precio <= 0)
+                ModelState.AddModelError("Precio", "Debe ingresar el precio del producto");
+
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _ServicioProducto.AddProducto(
+                        descripcion: model.Descripcion,
+                        precio: model.Precio,
+                        disponible: model.Disponible
                         );
 
                     return RedirectToAction("Index");

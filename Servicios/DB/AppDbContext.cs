@@ -68,8 +68,9 @@ namespace Servicios.DB
 
             modelBuilder.Entity<Producto>().ToTable("Productos").HasKey(producto => producto.Id);
             modelBuilder.Entity<Producto>().Property(producto => producto.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<Producto>().Property(producto => producto.Descripcion).HasMaxLength(50);
+            modelBuilder.Entity<Producto>().Property(producto => producto.Descripcion).IsRequired().HasMaxLength(50);
             modelBuilder.Entity<Producto>().Property(producto => producto.Precio).IsRequired();
+            modelBuilder.Entity<Producto>().Property(producto => producto.Disponible).IsRequired().HasMaxLength(2);
 
             #endregion
 

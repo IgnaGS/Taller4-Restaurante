@@ -23,7 +23,7 @@ namespace Servicios
             }
         }
 
-        public void AddProducto(string descripcion, double precio)
+        public void AddProducto(string descripcion, decimal precio, string disponible)
         {
             using (var db = new AppDbContext())
             {
@@ -31,14 +31,15 @@ namespace Servicios
                     .AddOrUpdate(new Producto()
                     {
                         Descripcion = descripcion,
-                        Precio = precio
+                        Precio = precio,
+                        Disponible = disponible
                     });
 
                 db.SaveChanges();
             }
         }
 
-        public void UpdateProducto(int id, string descripcion, double precio)
+        public void UpdateProducto(int id, string descripcion, decimal precio, string disponible)
         {
             using (var db = new AppDbContext())
             {
@@ -46,6 +47,7 @@ namespace Servicios
 
                 producto.Descripcion = descripcion;
                 producto.Precio = precio;
+                producto.Disponible = disponible;
 
                 db.SaveChanges();
             }

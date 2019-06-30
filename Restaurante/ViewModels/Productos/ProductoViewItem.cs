@@ -8,13 +8,17 @@ namespace Restaurante.ViewModels.Productos
 {
     public class ProductoViewItem
     {
-        public string Descripcion { set; get; }
-        public double Precio { set; get; }
+        public int Id { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public string Disponible { get; set; }
 
         public ProductoViewItem(Producto producto)
         {
+            Id = producto.Id;
             Descripcion = producto.Descripcion;
             Precio = producto.Precio;
+            Disponible = producto.Disponible;
         }
     }
 }

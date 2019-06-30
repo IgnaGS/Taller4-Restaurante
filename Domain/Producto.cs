@@ -9,7 +9,8 @@ namespace Domain
     public class Producto
     {
         public int Id { get; set; }
-        public string Descripcion { set; get; }
-        public double Precio { set; get; }
+        public string Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public string Disponible { get; set; }
     }
 }
