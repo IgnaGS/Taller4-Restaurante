@@ -93,6 +93,9 @@ namespace Restaurante.Controllers
             if (model.Precio <= 0)
                 ModelState.AddModelError("Precio", "Debe ingresar el precio del producto");
 
+            if (string.IsNullOrWhiteSpace(model.Disponible))
+                ModelState.AddModelError("Disponible", "Debe seleccionar si el producto estará disponible o no.");
+
             try
             {
                 if (ModelState.IsValid)
