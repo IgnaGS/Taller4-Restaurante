@@ -82,10 +82,17 @@ namespace Restaurante.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [Route("Editar")]
+        public ActionResult Editar(int id)
+        {
+            var prod = _ServicioProducto.ObtenerProducto(id);
+            return View(new ProductoViewItem(prod));
+        }
 
         [HttpPost]
         [Route("Editar", Name = "Productos_Editar")]
-        public ActionResult Editar(NuevoProductoViewModel model)
+        public ActionResult Editar(ProductoViewItem model)
         {
             if (string.IsNullOrWhiteSpace(model.Descripcion))
                 ModelState.AddModelError("Descripción", "Debe ingresar la descripción del prodcuto.");
@@ -100,7 +107,8 @@ namespace Restaurante.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _ServicioProducto.AddProducto(
+                    _ServicioProducto.UpdateProducto(
+                        id: model.Id,
                         descripcion: model.Descripcion,
                         precio: model.Precio,
                         disponible: model.Disponible

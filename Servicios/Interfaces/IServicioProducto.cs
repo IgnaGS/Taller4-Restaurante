@@ -14,5 +14,7 @@ namespace Servicios.Interfaces
         void AddProducto(string descripcion, decimal precio, string disponible);
 
         void UpdateProducto(int id, string descripcion, decimal precio, string disponible);
+
+        Producto ObtenerProducto(int id);
     }
 }

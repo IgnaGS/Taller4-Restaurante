@@ -30,9 +30,14 @@
                 </div>
                 <div class="form-group">
                     <label for="Disponible">Disponible</label>
-                    @Html.DropDownListFor(x => x.Disponible,
+                    @*@Html.DropDownListFor(x => x.Disponible,
                                         new SelectList(new String[] { "SI", "NO" }),
-                                        "¿Producto disponible?")
+                                        "¿Producto disponible?")*@
+
+                    <br />
+                    Si: @Html.RadioButtonFor(x => x.Disponible, "SI")
+                    <br />
+                    No: @Html.RadioButtonFor(x => x.Disponible, "NO")
                     @Html.ValidationMessageFor(x => x.Disponible, "", new { @class = "text-danger" })
                 </div>
                 @Html.ValidationMessage("", new { @class = "text-danger" })

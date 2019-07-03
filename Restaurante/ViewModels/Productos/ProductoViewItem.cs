@@ -13,6 +13,11 @@ namespace Restaurante.ViewModels.Productos
         public decimal Precio { get; set; }
         public string Disponible { get; set; }
 
+        public ProductoViewItem()
+        {
+
+        }
+
         public ProductoViewItem(Producto producto)
         {
             Id = producto.Id;

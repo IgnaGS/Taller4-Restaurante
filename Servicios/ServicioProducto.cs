@@ -23,6 +23,16 @@ namespace Servicios
             }
         }
 
+        public Producto ObtenerProducto(int id)
+        {
+            using (var db = new AppDbContext())
+            {
+                return db
+                    .Productos
+                    .Find(id);
+            }
+        }
+
         public void AddProducto(string descripcion, decimal precio, string disponible)
         {
             using (var db = new AppDbContext())

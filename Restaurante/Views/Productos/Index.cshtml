@@ -17,7 +17,7 @@
     <div class="row my-5">
         <div class="col-2">
             <a class="btn btn-dark form-control text-right" 
-               href="@Url.Action("Nuevo","Productos")">
+               href="@Url.Action("Nuevo","Productos")">     @*Acá se llama a la vista para crear un Producto*@ 
                 Nuevo Producto
             </a>
         </div>
@@ -45,11 +45,11 @@
                                 <td>@producto.Descripcion</td>
                                 <td>@producto.Precio</td>
                                 <td>@producto.Disponible</td>
-                                <td><a href="@Url.Action("Editar", "Productos", new { id = producto.Id})"   @*Acá llamar a la vista para modificar y deshabilitar/eliminar*@ 
+                                <td><a href="@Url.Action("Editar", "Productos", new { id = producto.Id})"   @*Acá se llama a la vista para editar un Producto*@ 
                                        class="btn btn-link">
                                         <i class="fas fa-ellipsis-h"
                                            data-toggle="tooltip"
-                                           title="Modificar"></i>
+                                           title="Editar Producto"></i>
                                     </a>
                                 </td>
                             </tr>

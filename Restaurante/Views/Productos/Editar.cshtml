@@ -1,4 +1,4 @@
-﻿@model Restaurante.ViewModels.Productos.NuevoProductoViewModel
+﻿@model Restaurante.ViewModels.Productos.ProductoViewItem
 
 @{
     ViewBag.Title = "Editar";
@@ -22,6 +22,17 @@
                         <label for="Presio">Precio</label>
                         @Html.TextBoxFor(x => x.Precio, new { @class = "form-control", placeholder = @Model.Precio, @type = "numeric" })
                         @Html.ValidationMessageFor(x => x.Precio, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Disponible">Disponible</label>
+                        @*@Html.DropDownListFor(x => x.Disponible,
+                                                new SelectList(new String[] { "SI", "NO" }),
+                                                "¿Producto disponible?")}*@
+                        <br />
+                        Si: @Html.RadioButtonFor(x => x.Disponible, "SI")
+                        <br />
+                        No: @Html.RadioButtonFor(x => x.Disponible, "NO")
+                        @Html.ValidationMessageFor(x => x.Disponible, "", new { @class = "text-danger" })
                     </div>
                     @Html.ValidationMessage("", new { @class = "text-danger" })
                     <button type="submit" class="btn btn-dark">
