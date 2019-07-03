@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -135,6 +136,8 @@
     <Compile Include="ViewModels\Productos\NuevoProductoViewModel.cs" />
     <Compile Include="ViewModels\Productos\ProductosViewModel.cs" />
     <Compile Include="ViewModels\Productos\ProductoViewItem.cs" />
+    <Compile Include="ViewModels\Proveedores\ProveedoresViewModel.cs" />
+    <Compile Include="ViewModels\Proveedores\ProveedorViewItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\all.min.css" />

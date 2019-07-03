@@ -23,7 +23,17 @@ namespace Servicios
             }
         }
 
-        public void AddProveedor(string descripcion, string direccion, string mail, string telefono, DateTime fechaAlta)
+        public Proveedor ObtenerProveedor(int id)
+        {
+            using (var db = new AppDbContext())
+            {
+                return db
+                    .Proveedores
+                    .Find(id);
+            }
+        }
+
+        public void AddProveedor(string descripcion, string direccion, string mail, string telefono)
         {
             using (var db = new AppDbContext())
             {
@@ -34,7 +44,7 @@ namespace Servicios
                         Direccion = direccion,
                         Mail = mail,
                         Telefono = telefono,
-                        FechaAlta = fechaAlta
+                        FechaAlta = DateTime.Now
                     });
 
                 db.SaveChanges();
