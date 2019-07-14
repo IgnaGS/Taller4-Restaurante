@@ -12,3 +12,10 @@ C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\obj\Debug\Domain.csprojAs
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\obj\Debug\Domain.dll
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Domain\obj\Debug\Domain.pdb
+C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Domain\bin\Debug\Domain.dll.config
+C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Domain\bin\Debug\Domain.dll
+C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Domain\bin\Debug\Domain.pdb
+C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Domain\obj\Debug\Domain.csprojAssemblyReference.cache
+C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Domain\obj\Debug\Domain.dll
+C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Domain\obj\Debug\Domain.pdb

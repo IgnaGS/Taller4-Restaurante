@@ -11,9 +11,9 @@ namespace Servicios.Interfaces
     {
         IEnumerable<Proveedor> ObtenerProveedores();
 
-        void AddProveedor(string descripcion, string direccion, string mail, string telefono, DateTime fechaAlta);
+        void AddProveedor(string descripcion, string direccion, string mail, string telefono);
 
-        void UpdateProveedor(int id, string descripcion, string direccion, string mail, string telefono, DateTime fechaAlta);
+        void UpdateProveedor(int id, string descripcion, string direccion, string mail, string telefono);       // , DateTime fechaAlta
 
         Proveedor ObtenerProveedor(int id);
     }

@@ -7,5 +7,11 @@ namespace Restaurante.ViewModels.Proveedores
 {
     public class ProveedoresViewModel
     {
+        public IEnumerable<ProveedorViewItem> Proveedores { get; set; }
+
+        public ProveedoresViewModel()
+        {
+            Proveedores = Enumerable.Empty<ProveedorViewItem>();
+        }
     }
 }

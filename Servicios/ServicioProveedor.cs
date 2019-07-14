@@ -51,7 +51,7 @@ namespace Servicios
             }
         }
 
-        public void UpdateProveedor(int id, string descripcion, string direccion, string mail, string telefono, DateTime fechaAlta)
+        public void UpdateProveedor(int id, string descripcion, string direccion, string mail, string telefono)     // , DateTime fechaAlta
         {
             using (var db = new AppDbContext())
             {
@@ -61,7 +61,7 @@ namespace Servicios
                 proveedor.Direccion = direccion;
                 proveedor.Mail = mail;
                 proveedor.Telefono = telefono;
-                proveedor.FechaAlta = fechaAlta;
+                //proveedor.FechaAlta = fechaAlta;
 
                 db.SaveChanges();
             }

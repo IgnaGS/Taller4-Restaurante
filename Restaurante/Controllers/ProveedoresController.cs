@@ -6,7 +6,7 @@ using Domain;
 using Servicios;
 using Servicios.Interfaces;
 using System.Web.Mvc;
-using Restaurante.ViewModels.Productos;
+using Restaurante.ViewModels.Proveedores;
 
 namespace Restaurante.Controllers
 {
@@ -35,7 +35,7 @@ namespace Restaurante.Controllers
         {
             var model = new ProveedoresViewModel()
             {
-                Productos = _ServicioProveedor.ObtenerProveedores().Select(x => new ProductoViewItem(x))
+                Proveedores = _ServicioProveedor.ObtenerProveedores().Select(x => new ProveedorViewItem(x))
             };
 
             return View(model);
@@ -57,13 +57,19 @@ namespace Restaurante.Controllers
         public ActionResult Nuevo(NuevoProveedorViewModel model)
         {
             if (string.IsNullOrWhiteSpace(model.Descripcion))
-                ModelState.AddModelError("Descripción", "Debe ingresar la descripción del prodcuto.");
+                ModelState.AddModelError("Descripción", "Debe ingresar la descripción del proveedor.");
 
-            if (model.Precio <= 0)
-                ModelState.AddModelError("Precio", "Debe ingresar el precio del producto");
+            if (string.IsNullOrWhiteSpace(model.Direccion))
+                ModelState.AddModelError("Direccion", "Debe ingresar la dirección del proveedor.");
 
-            if (string.IsNullOrWhiteSpace(model.Disponible))
-                ModelState.AddModelError("Disponible", "Debe seleccionar si el producto estará disponible o no.");
+            if (string.IsNullOrWhiteSpace(model.Mail))
+                ModelState.AddModelError("Mail", "Debe ingresar el correo electrónico del proveedor.");
+
+            if (string.IsNullOrWhiteSpace(model.Telefono))
+                ModelState.AddModelError("Telefono", "Debe ingresar el teléfono del proveedor.");
+
+            //if (string.IsNullOrWhiteSpace(model.Disponible))
+            //    ModelState.AddModelError("Disponible", "Debe seleccionar si el Proveedor estará disponible o no.");
 
             try
             {
@@ -71,8 +77,10 @@ namespace Restaurante.Controllers
                 {
                     _ServicioProveedor.AddProveedor(
                         descripcion: model.Descripcion,
-                        precio: model.Precio,
-                        disponible: model.Disponible
+                        direccion: model.Direccion,
+                        mail: model.Mail,
+                        telefono: model.Telefono
+                        //disponible: model.Disponible
                         );
 
                     return RedirectToAction("Index");
@@ -103,13 +111,19 @@ namespace Restaurante.Controllers
         public ActionResult Editar(ProveedorViewItem model)
         {
             if (string.IsNullOrWhiteSpace(model.Descripcion))
-                ModelState.AddModelError("Descripción", "Debe ingresar la descripción del prodcuto.");
+                ModelState.AddModelError("Descripción", "Debe ingresar la descripción del proveedor.");
 
-            if (model.Precio <= 0)
-                ModelState.AddModelError("Precio", "Debe ingresar el precio del producto");
+            if (string.IsNullOrWhiteSpace(model.Direccion))
+                ModelState.AddModelError("Direccion", "Debe ingresar la dirección del proveedor.");
 
-            if (string.IsNullOrWhiteSpace(model.Disponible))
-                ModelState.AddModelError("Disponible", "Debe seleccionar si el producto estará disponible o no.");
+            if (string.IsNullOrWhiteSpace(model.Mail))
+                ModelState.AddModelError("Mail", "Debe ingresar el correo electrónico del proveedor.");
+
+            if (string.IsNullOrWhiteSpace(model.Telefono))
+                ModelState.AddModelError("Telefono", "Debe ingresar el teléfono del proveedor.");
+
+            //if (string.IsNullOrWhiteSpace(model.Disponible))
+            //    ModelState.AddModelError("Disponible", "Debe seleccionar si el Proveedor estará disponible o no.");
 
             try
             {
@@ -118,8 +132,10 @@ namespace Restaurante.Controllers
                     _ServicioProveedor.UpdateProveedor(
                         id: model.Id,
                         descripcion: model.Descripcion,
-                        precio: model.Precio,
-                        disponible: model.Disponible
+                        direccion: model.Direccion,
+                        mail: model.Mail,
+                        telefono: model.Telefono
+                        //disponible: model.Disponible
                         );
 
                     return RedirectToAction("Index");
