@@ -14,5 +14,6 @@ namespace Domain
         public string Mail { get; set; }
         public string Telefono { get; set; }
         public DateTime FechaAlta { get; set; }
+        public string Disponible { get; set; }
     }
 }

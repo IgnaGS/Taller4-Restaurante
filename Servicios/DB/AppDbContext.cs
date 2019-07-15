@@ -78,11 +78,12 @@ namespace Servicios.DB
 
             modelBuilder.Entity<Proveedor>().ToTable("Proveedores").HasKey(proveedor => proveedor.Id);
             modelBuilder.Entity<Proveedor>().Property(proveedor => proveedor.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            modelBuilder.Entity<Proveedor>().Property(proveedor => proveedor.Descripcion).HasMaxLength(50);
+            modelBuilder.Entity<Proveedor>().Property(proveedor => proveedor.Descripcion).HasMaxLength(50).IsRequired();
             modelBuilder.Entity<Proveedor>().Property(proveedor => proveedor.Direccion).HasMaxLength(50).IsRequired();
             modelBuilder.Entity<Proveedor>().Property(proveedor => proveedor.Mail).HasMaxLength(50).IsRequired();
             modelBuilder.Entity<Proveedor>().Property(proveedor => proveedor.Telefono).HasMaxLength(50).IsRequired();
             modelBuilder.Entity<Proveedor>().Property(proveedor => proveedor.FechaAlta).IsRequired();
+            modelBuilder.Entity<Proveedor>().Property(proveedor => proveedor.Disponible).HasMaxLength(2).IsRequired();
 
             #endregion
 

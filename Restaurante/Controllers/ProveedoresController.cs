@@ -68,8 +68,8 @@ namespace Restaurante.Controllers
             if (string.IsNullOrWhiteSpace(model.Telefono))
                 ModelState.AddModelError("Telefono", "Debe ingresar el teléfono del proveedor.");
 
-            //if (string.IsNullOrWhiteSpace(model.Disponible))
-            //    ModelState.AddModelError("Disponible", "Debe seleccionar si el Proveedor estará disponible o no.");
+            if (string.IsNullOrWhiteSpace(model.Disponible))
+                ModelState.AddModelError("Disponible", "Debe seleccionar si el Proveedor estará disponible o no.");
 
             try
             {
@@ -79,8 +79,8 @@ namespace Restaurante.Controllers
                         descripcion: model.Descripcion,
                         direccion: model.Direccion,
                         mail: model.Mail,
-                        telefono: model.Telefono
-                        //disponible: model.Disponible
+                        telefono: model.Telefono,
+                        disponible: model.Disponible
                         );
 
                     return RedirectToAction("Index");
@@ -122,8 +122,8 @@ namespace Restaurante.Controllers
             if (string.IsNullOrWhiteSpace(model.Telefono))
                 ModelState.AddModelError("Telefono", "Debe ingresar el teléfono del proveedor.");
 
-            //if (string.IsNullOrWhiteSpace(model.Disponible))
-            //    ModelState.AddModelError("Disponible", "Debe seleccionar si el Proveedor estará disponible o no.");
+            if (string.IsNullOrWhiteSpace(model.Disponible))
+                ModelState.AddModelError("Disponible", "Debe seleccionar si el Proveedor estará disponible o no.");
 
             try
             {
@@ -134,8 +134,8 @@ namespace Restaurante.Controllers
                         descripcion: model.Descripcion,
                         direccion: model.Direccion,
                         mail: model.Mail,
-                        telefono: model.Telefono
-                        //disponible: model.Disponible
+                        telefono: model.Telefono,
+                        disponible: model.Disponible
                         );
 
                     return RedirectToAction("Index");

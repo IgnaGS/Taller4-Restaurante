@@ -11,6 +11,7 @@ namespace Restaurante.ViewModels.Proveedores
         public string Direccion { get; set; }
         public string Mail { get; set; }
         public string Telefono { get; set; }
+        public string Disponible { get; set; }
 
         public NuevoProveedorViewModel()
         {

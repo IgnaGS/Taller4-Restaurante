@@ -37,8 +37,8 @@ namespace Servicios.DB.Migrations
 
             #region Proveedores Seed
 
-            db.Proveedores.AddOrUpdate(new Proveedor() { Descripcion = "Acme", Direccion = "Calle Falsa 123", Mail = "contacto@acme.com.ar", Telefono = "23428625", FechaAlta = new DateTime(2019, 6, 1) });
-            db.Proveedores.AddOrUpdate(new Proveedor() { Descripcion = "Cañon", Direccion = "Camino General Chamizo 3452", Mail = "ventas@cañon.com.ar", Telefono = "72927834", FechaAlta = new DateTime(2019, 5, 23) });
+            db.Proveedores.AddOrUpdate(new Proveedor() { Descripcion = "Acme", Direccion = "Calle Falsa 123", Mail = "contacto@acme.com.ar", Telefono = "23428625", FechaAlta = new DateTime(2019, 6, 1), Disponible = "SI" });
+            db.Proveedores.AddOrUpdate(new Proveedor() { Descripcion = "Cañon", Direccion = "Camino General Chamizo 3452", Mail = "ventas@cañon.com.ar", Telefono = "72927834", FechaAlta = new DateTime(2019, 5, 23), Disponible = "SI" });
 
             db.SaveChanges();
 
@@ -47,75 +47,48 @@ namespace Servicios.DB.Migrations
 
             #endregion
 
-            /* Armar Seeds 
-            #region Profesores Seed
+            #region Empleados Seed
 
-            db.Profesores.AddOrUpdate(new Profesor() { Dni = 21333525, Nombre = "Juan", Apellido = "González", FechaNacimiento = new DateTime(1971, 5, 5), Legajo = 453 });
-            db.Profesores.AddOrUpdate(new Profesor() { Dni = 33103227, Nombre = "Federico", Apellido = "Marchese", FechaNacimiento = new DateTime(1987, 6, 7), Legajo = 72 });
-            db.Profesores.AddOrUpdate(new Profesor() { Dni = 31255262, Nombre = "Andrea", Apellido = "Ludueña", FechaNacimiento = new DateTime(1985, 1, 15), Legajo = 3 });
-            db.Profesores.AddOrUpdate(new Profesor() { Dni = 16822529, Nombre = "José", Apellido = "Sand", FechaNacimiento = new DateTime(1963, 3, 20), Legajo = 99 });
-            db.Profesores.AddOrUpdate(new Profesor() { Dni = 17822529, Nombre = "Micaela", Apellido = "Montero", FechaNacimiento = new DateTime(1963, 3, 20), Legajo = 15 });
+            db.Empleados.AddOrUpdate(new Empleado() { Legajo = 2125, Nombre = "Cosme", Apellido = "Fulanito" });
+            db.Empleados.AddOrUpdate(new Empleado() { Legajo = 6542, Nombre = "Bernard", Apellido = "Bernoulli" });
 
             db.SaveChanges();
 
-            db.Profesores.FirstOrDefault(x => x.Legajo == 453).Materias.Add(materia1);
-            db.Profesores.FirstOrDefault(x => x.Legajo == 72).Materias.Add(materia2);
-            db.Profesores.FirstOrDefault(x => x.Legajo == 3).Materias.Add(materia3);
-            db.Profesores.FirstOrDefault(x => x.Legajo == 99).Materias.Add(materia4);
-            db.Profesores.FirstOrDefault(x => x.Legajo == 15).Materias.Add(materia5);
+            var empleado1 = db.Empleados.FirstOrDefault(x => x.Legajo == 2125);
+            var empleado2 = db.Empleados.FirstOrDefault(x => x.Legajo == 6542);
+
+            #endregion
+
+            #region Stock Seed
+
+            db.Stocks.AddOrUpdate(new Stock() { Producto = producto1, Cantidad = 80 });
+            db.Stocks.AddOrUpdate(new Stock() { Producto = producto2, Cantidad = 55 });
 
             db.SaveChanges();
 
             #endregion
 
-            #region Alumnos Seed
+            #region Catalogo Seed
 
-            db.Alumnos.AddOrUpdate(new Alumno() { Dni = 41123123, Nombre = "Andrés", Apellido = "Pinedo", FechaNacimiento = new DateTime(1998, 7, 3) });
-            db.Alumnos.AddOrUpdate(new Alumno() { Dni = 40212223, Nombre = "Pablo", Apellido = "Romero", FechaNacimiento = new DateTime(1997, 1, 4) });
-            db.Alumnos.AddOrUpdate(new Alumno() { Dni = 43133323, Nombre = "Carolina", Apellido = "Andrada", FechaNacimiento = new DateTime(1999, 12, 12) });
-            db.Alumnos.AddOrUpdate(new Alumno() { Dni = 39122223, Nombre = "Macarena", Apellido = "Giménez", FechaNacimiento = new DateTime(1996, 2, 3) });
-            db.Alumnos.AddOrUpdate(new Alumno() { Dni = 40123123, Nombre = "Federico", Apellido = "Ruiz", FechaNacimiento = new DateTime(1997, 3, 3) });
-
-            db.SaveChanges();
-
-            var alumno1 = db.Alumnos.FirstOrDefault(x => x.Dni == 41123123);
-            var alumno2 = db.Alumnos.FirstOrDefault(x => x.Dni == 40212223);
-            var alumno3 = db.Alumnos.FirstOrDefault(x => x.Dni == 43133323);
-            var alumno4 = db.Alumnos.FirstOrDefault(x => x.Dni == 39122223);
-            var alumno5 = db.Alumnos.FirstOrDefault(x => x.Dni == 40123123);
-
-            alumno1.Materias.Add(materia1);
-            alumno1.Materias.Add(materia2);
-            alumno2.Materias.Add(materia2);
-            alumno2.Materias.Add(materia3);
-            alumno3.Materias.Add(materia3);
-            alumno3.Materias.Add(materia4);
-            alumno4.Materias.Add(materia4);
-            alumno4.Materias.Add(materia5);
-            alumno5.Materias.Add(materia5);
-            alumno5.Materias.Add(materia1);
+            db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro1, Producto = producto1 });
+            db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro1, Producto = producto2 });
+            db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro2, Producto = producto2 });
 
             db.SaveChanges();
 
             #endregion
 
-            #region Examenes Seed
+            #region Orden de Compra Seed
 
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)8.5, Fecha = new DateTime(2018, 8, 28), Alumno = alumno1, Materia = materia1 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)2, Fecha = new DateTime(2018, 8, 29), Alumno = alumno1, Materia = materia2 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)5, Fecha = new DateTime(2018, 8, 29), Alumno = alumno2, Materia = materia2 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)9, Fecha = new DateTime(2018, 9, 22), Alumno = alumno2, Materia = materia3 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)6, Fecha = new DateTime(2018, 9, 22), Alumno = alumno3, Materia = materia3 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)10, Fecha = new DateTime(2018, 10, 2), Alumno = alumno3, Materia = materia4 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)4, Fecha = new DateTime(2018, 10, 2), Alumno = alumno4, Materia = materia4 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)7, Fecha = new DateTime(2018, 9, 1), Alumno = alumno4, Materia = materia5 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)2, Fecha = new DateTime(2018, 9, 1), Alumno = alumno5, Materia = materia5 });
-            db.Examenes.AddOrUpdate(new Examen() { Nota = (decimal)8, Fecha = new DateTime(2018, 8, 28), Alumno = alumno5, Materia = materia1 });
+            db.OrdenesCompras.AddOrUpdate(new OrdenCompra() { Empleado = empleado1, Producto = producto1, Cantidad = 50, FechaEntrega = new DateTime(2019, 6, 20), Proveedor = proveedro1, Estado = "Concretada" });
+            db.OrdenesCompras.AddOrUpdate(new OrdenCompra() { Empleado = empleado1, Producto = producto2, Cantidad = 20, FechaEntrega = new DateTime(2019, 6, 20), Proveedor = proveedro1, Estado = "Cancelada" });
+            db.OrdenesCompras.AddOrUpdate(new OrdenCompra() { Empleado = empleado2, Producto = producto2, Cantidad = 35, FechaEntrega = new DateTime(2019, 7, 01), Proveedor = proveedro2, Estado = "Concretada" });
+            db.OrdenesCompras.AddOrUpdate(new OrdenCompra() { Empleado = empleado2, Producto = producto2, Cantidad = 30, FechaEntrega = new DateTime(2019, 7, 16), Proveedor = proveedro2, Estado = "Activa" });
 
             db.SaveChanges();
 
             #endregion
-            */
+            
         }
 
     }

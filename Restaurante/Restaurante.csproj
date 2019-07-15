@@ -127,12 +127,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Empleados\EmpleadosViewModel.cs" />
+    <Compile Include="ViewModels\Empleados\EmpleadoViewItem.cs" />
     <Compile Include="ViewModels\Productos\NuevoProductoViewModel.cs" />
     <Compile Include="ViewModels\Productos\ProductosViewModel.cs" />
     <Compile Include="ViewModels\Productos\ProductoViewItem.cs" />
@@ -191,6 +194,7 @@
     <Content Include="Views\Proveedores\Index.cshtml" />
     <Content Include="Views\Proveedores\Nuevo.cshtml" />
     <Content Include="Views\Proveedores\Editar.cshtml" />
+    <Content Include="Views\Empleados\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

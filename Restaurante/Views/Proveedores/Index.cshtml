@@ -36,11 +36,12 @@
                             <th scope="col">e-Mail</th>
                             <th scope="col">Teléfono</th>
                             <th scope="col">Fecha Alta</th>
+                            <th scope="col">Disponible</th>
                             <th scope="col"> </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var Proveedor in Model.Proveedores.OrderBy(Proveedor => Proveedor.Descripcion))
+                        @foreach (var Proveedor in Model.Proveedores.OrderByDescending(Proveedor => Proveedor.Disponible).ThenBy(Proveedor => Proveedor.Descripcion))
                         {
                             <tr>
                                 <td>@Proveedor.Id</td>
@@ -49,7 +50,7 @@
                                 <td>@Proveedor.Mail</td>
                                 <td>@Proveedor.Telefono</td>
                                 <td>@Proveedor.FechaAlta</td>
-                                @*<td>@Proveedor.Disponible</td>*@
+                                <td>@Proveedor.Disponible</td>
                                 <td><a href="@Url.Action("Editar", "Proveedores", new { id = Proveedor.Id})"   @*Acá se llama a la vista para editar un Proveedor*@ 
                                        class="btn btn-link">
                                         <i class="fas fa-ellipsis-h"

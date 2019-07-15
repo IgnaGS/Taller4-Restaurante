@@ -38,14 +38,14 @@
                     @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control", placeholder = "Ingrese el Teléfono del proveedor" })
                     @Html.ValidationMessageFor(x => x.Descripcion, "", new { @class = "text-danger" })
                 </div>
-                @*<div class="form-group">
+                <div class="form-group">
                     <label for="Disponible">Disponible</label>
                     <br />
                     Si: @Html.RadioButtonFor(x => x.Disponible, "SI")
                     <br />
                     No: @Html.RadioButtonFor(x => x.Disponible, "NO")
                     @Html.ValidationMessageFor(x => x.Disponible, "", new { @class = "text-danger" })
-                </div>*@
+                </div>
                 @Html.ValidationMessage("", new { @class = "text-danger" })
                 <button type="submit" class="btn btn-dark">
                     Confirmar

@@ -42,8 +42,14 @@
   <ItemGroup>
     <Compile Include="DB\AppDbContext.cs" />
     <Compile Include="DB\Migrations\Configuration.cs" />
+    <Compile Include="Interfaces\IServicioCatalogo.cs" />
+    <Compile Include="Interfaces\IServicioStock.cs" />
+    <Compile Include="Interfaces\IServicioEmpleado.cs" />
     <Compile Include="Interfaces\IServicioProveedor.cs" />
     <Compile Include="Interfaces\IServicioProducto.cs" />
+    <Compile Include="ServicioCatalogo.cs" />
+    <Compile Include="ServicioStock.cs" />
+    <Compile Include="ServicioEmpleado.cs" />
     <Compile Include="ServicioProveedor.cs" />
     <Compile Include="ServicioProducto.cs" />
   </ItemGroup>

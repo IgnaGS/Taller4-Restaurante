@@ -14,6 +14,7 @@ namespace Restaurante.ViewModels.Proveedores
         public string Mail { get; set; }
         public string Telefono { get; set; }
         public DateTime FechaAlta { get; set; }
+        public string Disponible { get; set; }
 
         public ProveedorViewItem()
         {
@@ -28,6 +29,7 @@ namespace Restaurante.ViewModels.Proveedores
             Mail = proveedor.Mail;
             Telefono = proveedor.Telefono;
             FechaAlta = proveedor.FechaAlta;
+            Disponible = proveedor.Disponible;
         }
     }
 }
