@@ -1,0 +1,54 @@
+﻿@model Restaurante.ViewModels.Catalogos.CatalogosViewModel
+
+@{
+    ViewBag.Title = "Catalogos";
+}
+
+<div class="container" >
+    <h4 class="text-center mt-5">
+        Catálogos
+    </h4>
+
+    <div class="row my-5">
+        <div class="col-2">
+            <a class="btn btn-dark form-control text-right"
+               href="@Url.Action("Nuevo","Catalogos")"> @*Acá se llama a la vista para crear un Catalogo*@
+                Nuevo Proveedor
+            </a>
+        </div>
+    </div>
+
+    @if (Model.Catalogos.Any())
+    {
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Procuto</th>
+
+                            <th scope="col"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Catalogo in Model.Catalogos.OrderBy(Catalogo => Catalogo.Producto.Descripcion))
+                        {
+                            <tr>
+                                <td>@Catalogo.Producto.Descripcion</td>
+
+                                <td><a href="@Url.Action("Eliminar", "Catalogos", new { idProveedor = Catalogo.Proveedor.Id, idProducto = Catalogo.Producto.Id})">
+                                        Eliminar Producto del Catálogo
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-primary">No se encontraron resultados de Catalogos.</div>
+    }
+</div>

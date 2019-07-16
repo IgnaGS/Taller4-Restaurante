@@ -1,0 +1,50 @@
+﻿@model Restaurante.ViewModels.Catalogos.NuevoCatalogoViewModel
+
+@{
+    ViewBag.Title = "Nuevo";
+}
+
+@section scripts {
+    <script type="text/javascript">
+    </script>
+}
+
+<div class="container">
+    <h4 class="text-center mt-5">
+        Nuevo Proveedor
+    </h4>
+
+    <div class="row">
+        <div class="offset-3 col-6">
+            @using (Html.BeginForm("Nuevo", "Catalogos", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="Proveedor">Proveedor</label>
+                        @Html.DropDownListFor(x => x.IdProveedor,
+                        new SelectList(Proveedores.),
+                        "Seleccione un Proveedor")
+
+                        @*@Html.DropDownListFor(x => x.Disponible,
+                        new SelectList(new String[] { "SI", "NO" }),
+                        "¿Producto disponible?")*@
+
+                </div>
+                <div class="form-group">
+                    <label for="Producto">Producto</label>
+                        @Html.DropDownListFor(x => x.IdProducto,
+                        new SelectList(Productos.),
+                        "Seleccione un Producto")
+                </div>
+
+                @Html.ValidationMessage("", new { @class = "text-danger" })
+                <button type="submit" class="btn btn-dark">
+                    Confirmar
+                </button>
+                <a class="btn btn-outline-dark"
+                   href="@Url.Action("Index","Proveedores")">
+                    Cancelar
+                </a>
+            }
+        </div>
+    </div>
+</div>

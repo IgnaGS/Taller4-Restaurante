@@ -38,6 +38,7 @@
                             <th scope="col">Fecha Alta</th>
                             <th scope="col">Disponible</th>
                             <th scope="col"> </th>
+                            <th scope="col"> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +52,10 @@
                                 <td>@Proveedor.Telefono</td>
                                 <td>@Proveedor.FechaAlta</td>
                                 <td>@Proveedor.Disponible</td>
+                                <td><a href="@Url.Action("Index", "Catalogos", new { idProveedor = Proveedor.Id})" @*Acá se llama a la vista para ver los catálogos de un Proveedor*@>
+                                        Ver Catálogo
+                                    </a>
+                                </td>
                                 <td><a href="@Url.Action("Editar", "Proveedores", new { id = Proveedor.Id})"   @*Acá se llama a la vista para editar un Proveedor*@ 
                                        class="btn btn-link">
                                         <i class="fas fa-ellipsis-h"
