@@ -13,12 +13,12 @@ namespace Servicios
 {
     public class ServicioCatalogo : IServicioCatalogo
     {
-        public Catalogo ObtenerCatalogo(Proveedor proveedor)
+        public Catalogo ObtenerCatalogo(int idProveedor)
         {
             using (var db = new AppDbContext())
             {
                 return db
-                    .Catalogos.Where(c => c.Proveedor = proveedor && c.Producto.Disponible.Equals("SI"))
+                    .Catalogos.FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Disponible.Equals("SI"))
                     ;
             }
         }

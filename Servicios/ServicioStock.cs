@@ -13,15 +13,40 @@ namespace Servicios
 {
     public class ServicioStock : IServicioStock
     {
-        public Stock ObtenerStock(Producto producto)
+        public Stock ObtenerStock(int idProducto)
         {
             using (var db = new AppDbContext())
             {
-                return db
-                    .Stocks.Where(s => s.Producto = producto)
-                    //.Select(s => s.Producto)
-                    //.Where(p => p.Id = idProducto)
-                    ;
+                return db.Stocks.FirstOrDefault(s => s.Producto.Id == idProducto);
+                ;
+            }
+        }
+
+        public void AddStock(Producto producto, int cantidad)
+        {
+            using (var db = new AppDbContext())
+            {
+                db.Stocks
+                    .AddOrUpdate(new Stock()
+                    {
+                        Producto = producto,
+                        Cantidad = cantidad
+                    });
+
+                db.SaveChanges();
+            }
+        }
+
+        public void UpdateStock(int id, Producto producto, int cantidad)
+        {
+            using (var db = new AppDbContext())
+            {
+                //var stock = db.Stocks.Find(id);
+                var stock = ObtenerStock(producto.Id);
+
+                stock.Cantidad += cantidad;
+
+                db.SaveChanges();
             }
         }
     }

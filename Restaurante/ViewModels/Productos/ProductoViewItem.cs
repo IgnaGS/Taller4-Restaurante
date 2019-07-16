@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Domain;
+using Servicios;
 
 namespace Restaurante.ViewModels.Productos
 {
@@ -11,7 +12,12 @@ namespace Restaurante.ViewModels.Productos
         public int Id { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
+
+        public Stock Stock { get; set; }
+
         public string Disponible { get; set; }
+
+
 
         public ProductoViewItem()
         {
@@ -24,6 +30,7 @@ namespace Restaurante.ViewModels.Productos
             Descripcion = producto.Descripcion;
             Precio = producto.Precio;
             Disponible = producto.Disponible;
+            Stock = ServicioStock.ObtenerStock(producto.Id);
         }
     }
 }

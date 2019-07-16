@@ -9,6 +9,10 @@ namespace Servicios.Interfaces
 {
     public interface IServicioStock
     {
-        Stock ObtenerStock(Producto producto);
+        Stock ObtenerStock(int idProducto);
+
+        void AddStock(Producto producto, int cantidad);
+
+        void UpdateStock(int id, Producto producto, int cantidad);
     }
 }

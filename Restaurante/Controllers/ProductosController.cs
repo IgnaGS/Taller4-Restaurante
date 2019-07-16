@@ -27,7 +27,7 @@ namespace Restaurante.Controllers
 
         #endregion
 
-        #region Get Methods
+        #region Index
 
         [HttpGet]
         [Route(Name = "Productos_Index")]
@@ -40,6 +40,10 @@ namespace Restaurante.Controllers
 
             return View(model);
         }
+
+        #endregion
+
+        #region Nuevo
 
         [HttpGet]
         [Route("Nuevo", Name = "Productos_Nuevo")]
@@ -81,6 +85,10 @@ namespace Restaurante.Controllers
 
             return View(model);
         }
+
+        #endregion
+
+        #region Editar
 
         [HttpGet]
         [Route("Editar")]

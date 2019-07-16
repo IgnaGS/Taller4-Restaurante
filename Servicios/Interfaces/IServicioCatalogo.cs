@@ -9,6 +9,6 @@ namespace Servicios.Interfaces
 {
     public interface IServicioCatalogo
     {
-        Catalogo ObtenerCatalogo(Proveedor proveedor);
+        Catalogo ObtenerCatalogo(int idProveedor);
     }
 }
