@@ -22,27 +22,32 @@ namespace Servicios
             }
         }
 
-        public void AddStock(Producto producto, int cantidad)
+        public void AddStock(int idProducto, int cantidad)
         {
             using (var db = new AppDbContext())
             {
-                db.Stocks
-                    .AddOrUpdate(new Stock()
-                    {
-                        Producto = producto,
-                        Cantidad = cantidad
-                    });
+                var producto = db.Productos.Find(idProducto);
+
+                var stock = new Stock()
+                {
+                    Producto = producto,
+                    Cantidad = cantidad
+                };
+
+                db.Stocks.AddOrUpdate(stock);
+
+                db.Productos.Attach(producto);
 
                 db.SaveChanges();
             }
         }
 
-        public void UpdateStock(int id, Producto producto, int cantidad)
+        public void UpdateStock(int id, int idProducto, int cantidad)
         {
             using (var db = new AppDbContext())
             {
                 //var stock = db.Stocks.Find(id);
-                var stock = ObtenerStock(producto.Id);
+                var stock = ObtenerStock(idProducto);
 
                 stock.Cantidad += cantidad;
 

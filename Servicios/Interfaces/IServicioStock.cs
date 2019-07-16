@@ -11,8 +11,8 @@ namespace Servicios.Interfaces
     {
         Stock ObtenerStock(int idProducto);
 
-        void AddStock(Producto producto, int cantidad);
+        void AddStock(int idProducto, int cantidad);
 
-        void UpdateStock(int id, Producto producto, int cantidad);
+        void UpdateStock(int id, int idProducto, int cantidad);
     }
 }

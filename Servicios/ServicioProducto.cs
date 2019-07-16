@@ -13,6 +13,8 @@ namespace Servicios
 {
     public class ServicioProducto : IServicioProducto
     {
+        private IServicioStock _ServicioStock = new ServicioStock();
+
         public IEnumerable<Producto> ObtenerProductos()
         {
             using (var db = new AppDbContext())
@@ -33,20 +35,26 @@ namespace Servicios
             }
         }
 
-        public void AddProducto(string descripcion, decimal precio, string disponible)
+        public void AddProducto(string descripcion, decimal precio, int stockInicial, string disponible)
         {
+            Producto producto;
+
             using (var db = new AppDbContext())
             {
-                db.Productos
-                    .AddOrUpdate(new Producto()
-                    {
-                        Descripcion = descripcion,
-                        Precio = precio,
-                        Disponible = disponible
-                    });
+                producto = new Producto
+                {
+                    Descripcion = descripcion,
+                    Precio = precio,
+                    Disponible = disponible
+                };
+
+                db.Productos.AddOrUpdate(producto);
 
                 db.SaveChanges();
             }
+
+            if (producto != null)
+                _ServicioStock.AddStock(producto.Id, stockInicial);
         }
 
         public void UpdateProducto(int id, string descripcion, decimal precio, string disponible)

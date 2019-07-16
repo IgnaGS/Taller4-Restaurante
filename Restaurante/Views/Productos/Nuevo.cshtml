@@ -29,10 +29,15 @@
                     @Html.ValidationMessageFor(x => x.Precio, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
+                    <label for="Stock">Stock</label>
+                    @Html.TextBoxFor(x => x.StockInicial, new { @class = "form-control", placeholder = "Ingrese el Stock inicial del producto", @type = "numeric" })
+                    @Html.ValidationMessageFor(x => x.StockInicial, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
                     <label for="Disponible">Disponible</label>
                     @*@Html.DropDownListFor(x => x.Disponible,
-                                        new SelectList(new String[] { "SI", "NO" }),
-                                        "¿Producto disponible?")*@
+                new SelectList(new String[] { "SI", "NO" }),
+                "¿Producto disponible?")*@
 
                     <br />
                     Si: @Html.RadioButtonFor(x => x.Disponible, "SI")

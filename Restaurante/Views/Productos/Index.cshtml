@@ -33,6 +33,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Precio</th>
+                            <th scope="col">Stock</th>
                             <th scope="col">Disponible</th>
                             <th scope="col"> </th>
                         </tr>
@@ -44,6 +45,7 @@
                                 <td>@producto.Id</td>
                                 <td>@producto.Descripcion</td>
                                 <td>@producto.Precio</td>
+                                <td>@producto.StockActual</td>
                                 <td>@producto.Disponible</td>
                                 <td><a href="@Url.Action("Editar", "Productos", new { id = producto.Id})"   @*Acá se llama a la vista para editar un Producto*@ 
                                        class="btn btn-link">

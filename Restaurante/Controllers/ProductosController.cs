@@ -62,8 +62,11 @@ namespace Restaurante.Controllers
             if (model.Precio <= 0)
                 ModelState.AddModelError("Precio", "Debe ingresar el precio del producto");
 
+            if (model.StockInicial < 0)
+                ModelState.AddModelError("Stock", "Debe ingresar el stock inicial del producto, o 0 si no tiene stock");
+
             if (string.IsNullOrWhiteSpace(model.Disponible))
-                ModelState.AddModelError("Disponible", "Debe seleccionar si el producto estará disponible o no.");
+                ModelState.AddModelError("Disponible", "Debe seleccionar si el producto estará disponible para ordenar, o no.");
 
             try
             {
@@ -72,6 +75,7 @@ namespace Restaurante.Controllers
                     _ServicioProducto.AddProducto(
                         descripcion: model.Descripcion,
                         precio: model.Precio,
+                        stockInicial: model.StockInicial,
                         disponible: model.Disponible
                         );
 
