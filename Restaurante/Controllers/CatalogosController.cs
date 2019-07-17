@@ -35,6 +35,7 @@ namespace Restaurante.Controllers
         {
             var model = new CatalogosViewModel()
             {
+                IdProveedor = idProveedor,
                 Catalogos = _ServicioCatalogo.ObtenerCatalogos(idProveedor).Select(x => new CatalogoViewItem(x))
             };
 
@@ -47,9 +48,12 @@ namespace Restaurante.Controllers
 
         [HttpGet]
         [Route("Nuevo", Name = "Catalogos_Nuevo")]
-        public ActionResult Nuevo()
+        public ActionResult Nuevo(int idProveedor)
         {
-            return View( new NuevoCatalogoViewModel() { } );
+            return View( new NuevoCatalogoViewModel()
+            {
+                IdProveedor = idProveedor
+            } );
         }
 
         [HttpPost]
@@ -59,7 +63,7 @@ namespace Restaurante.Controllers
             if (model.IdProveedor <= 0)
                 ModelState.AddModelError("IdProveedor", "Debe seleccionar el Proveedor del Catálogo");
 
-            if (model.IdProducto < 0)
+            if (model.IdProducto <= 0)
                 ModelState.AddModelError("IdProducto", "Debe seleccionar el Producto del Catalogo");
 
             try
@@ -84,7 +88,7 @@ namespace Restaurante.Controllers
 
         #endregion
 
-        #region Editar
+        #region Eliminar
 
         [HttpGet]
         [Route("Eliminar")]
@@ -103,8 +107,8 @@ namespace Restaurante.Controllers
                 if (ModelState.IsValid)
                 {
                     _ServicioCatalogo.DeleteCatalogo(
-                        idProveedor: model.Proveedor.Id,
-                        idProducto: model.Producto.Id
+                        idProveedor: model.IdProveedor,
+                        idProducto: model.IdProducto
                         );
 
                     return RedirectToAction("Index");

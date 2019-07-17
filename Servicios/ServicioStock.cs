@@ -18,7 +18,6 @@ namespace Servicios
             using (var db = new AppDbContext())
             {
                 return db.Stocks.FirstOrDefault(s => s.Producto.Id == idProducto);
-                ;
             }
         }
 

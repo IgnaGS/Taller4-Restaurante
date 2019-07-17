@@ -17,7 +17,11 @@ namespace Servicios
         {
             using (var db = new AppDbContext())
             {
-                return db.Catalogos.Where(c => c.Proveedor.Id == idProveedor && c.Producto.Disponible.Equals("SI")).ToList();
+                return db.Catalogos
+                    .Where(c => c.Proveedor.Id == idProveedor && c.Producto.Disponible.Equals("SI"))
+                    .Include(x => x.Producto)
+                    .Include(x => x.Proveedor)
+                    .ToList();
             }
         }
 

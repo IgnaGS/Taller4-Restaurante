@@ -20,7 +20,7 @@ namespace Servicios.DB.Migrations
         
         protected override void Seed(AppDbContext db)
         {
-            if (db.Productos.Any())
+            if (db.OrdenesCompras.Any())
                 return;
 
             #region Productos Seed
@@ -30,10 +30,17 @@ namespace Servicios.DB.Migrations
 
             db.SaveChanges();
 
-            var producto1 = db.Productos.FirstOrDefault(x => x.Descripcion == "Prodcuto 1 Prueba");
-            var producto2 = db.Productos.FirstOrDefault(x => x.Descripcion == "Prodcuto 2 Prueba");
+            var producto1 = db.Productos.FirstOrDefault(x => x.Id == 1);
+            var producto2 = db.Productos.FirstOrDefault(x => x.Id == 2);
 
             #endregion
+
+            #region Stock Seed
+
+            db.Stocks.AddOrUpdate(new Stock() { Producto = producto1, Cantidad = 80 });
+            db.Stocks.AddOrUpdate(new Stock() { Producto = producto2, Cantidad = 55 });
+
+            db.SaveChanges();
 
             #region Proveedores Seed
 
@@ -44,6 +51,10 @@ namespace Servicios.DB.Migrations
 
             var proveedro1 = db.Proveedores.FirstOrDefault(x => x.Descripcion == "Acme");
             var proveedro2 = db.Proveedores.FirstOrDefault(x => x.Descripcion == "Cañon");
+
+            db.SaveChanges();
+
+            #endregion
 
             #endregion
 
@@ -56,13 +67,6 @@ namespace Servicios.DB.Migrations
 
             var empleado1 = db.Empleados.FirstOrDefault(x => x.Legajo == 2125);
             var empleado2 = db.Empleados.FirstOrDefault(x => x.Legajo == 6542);
-
-            #endregion
-
-            #region Stock Seed
-
-            db.Stocks.AddOrUpdate(new Stock() { Producto = producto1, Cantidad = 80 });
-            db.Stocks.AddOrUpdate(new Stock() { Producto = producto2, Cantidad = 55 });
 
             db.SaveChanges();
 

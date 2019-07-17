@@ -12,8 +12,8 @@
     <div class="row my-5">
         <div class="col-2">
             <a class="btn btn-dark form-control text-right"
-               href="@Url.Action("Nuevo","Catalogos")"> @*Acá se llama a la vista para crear un Catalogo*@
-                Nuevo Proveedor
+               href="@Url.Action("Nuevo","Catalogos", new { idProveedor = Model.IdProveedor})"> @*Acá se llama a la vista para crear un Catalogo*@
+                Agregar producto
             </a>
         </div>
     </div>
@@ -31,12 +31,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var Catalogo in Model.Catalogos.OrderBy(Catalogo => Catalogo.Producto.Descripcion))
+                        @foreach (var Catalogo in Model.Catalogos.OrderBy(Catalogo => Catalogo.Producto))
                         {
                             <tr>
-                                <td>@Catalogo.Producto.Descripcion</td>
+                                <td>@Catalogo.Producto</td>
 
-                                <td><a href="@Url.Action("Eliminar", "Catalogos", new { idProveedor = Catalogo.Proveedor.Id, idProducto = Catalogo.Producto.Id})">
+                                <td><a href="@Url.Action("Eliminar", "Catalogos", new { idProveedor = Catalogo.IdProveedor, idProducto = Catalogo.IdProducto})">
                                         Eliminar Producto del Catálogo
                                     </a>
                                 </td>

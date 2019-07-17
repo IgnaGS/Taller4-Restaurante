@@ -11,9 +11,11 @@ namespace Restaurante.ViewModels.Catalogos
     public class CatalogoViewItem
     {
         public int Id { get; set; }
-        public Proveedor Proveedor { get; set; }
-        public Producto Producto { get; set; }
+        public string Proveedor { get; set; }
+        public string Producto { get; set; }
 
+        public int IdProducto { get; set; }
+        public int IdProveedor { get; set; }
 
         public CatalogoViewItem()
         {
@@ -22,8 +24,8 @@ namespace Restaurante.ViewModels.Catalogos
         public CatalogoViewItem(Catalogo Catalogo)
         {
             Id = Catalogo.Id;
-            Proveedor = Catalogo.Proveedor;
-            Producto = Catalogo.Producto;
+            Proveedor = Catalogo.Proveedor.Descripcion;
+            Producto = Catalogo.Producto.Descripcion;
         }
     }
 }

@@ -20,20 +20,18 @@
             {
                 <div class="form-group">
                     <label for="Proveedor">Proveedor</label>
-                        @Html.DropDownListFor(x => x.IdProveedor,
-                        new SelectList(Proveedores.),
-                        "Seleccione un Proveedor")
-
-                        @*@Html.DropDownListFor(x => x.Disponible,
-                        new SelectList(new String[] { "SI", "NO" }),
-                        "¿Producto disponible?")*@
+                        @* Acá podría mostrar el nombre del proveedor, de forma orientativa
+                            pero ya está asignado en el objeto *@
 
                 </div>
                 <div class="form-group">
                     <label for="Producto">Producto</label>
-                        @Html.DropDownListFor(x => x.IdProducto,
+                       @* Acá habría que poner un desplegable con todos los productos
+                           que ese proveedor actualmente no tenga *@
+                    
+                       @*@Html.DropDownListFor(x => x.IdProducto,
                         new SelectList(Productos.),
-                        "Seleccione un Producto")
+                        "Seleccione un Producto")*@
                 </div>
 
                 @Html.ValidationMessage("", new { @class = "text-danger" })

@@ -11,7 +11,7 @@ namespace Servicios.Interfaces
     {
         IEnumerable<Catalogo> ObtenerCatalogos(int idProveedor);
 
-        public Catalogo ObtenerCatalogo(int idProveedor, int idProducto);
+        Catalogo ObtenerCatalogo(int idProveedor, int idProducto);
 
         void AddCatalogo(int idProducto, int idProveedor);
 
