@@ -73,13 +73,13 @@ namespace Servicios.DB.Migrations
             #endregion
 
             #region Catalogo Seed
-
+         
             db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro1, Producto = producto1 });
             db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro1, Producto = producto2 });
             db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro2, Producto = producto2 });
 
             db.SaveChanges();
-
+         
             #endregion
 
             #region Orden de Compra Seed

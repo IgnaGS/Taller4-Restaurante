@@ -9,7 +9,9 @@ namespace Servicios.Interfaces
 {
     public interface IServicioCatalogo
     {
-        IEnumerable<Catalogo> ObtenerCatalogos(int idProveedor);
+        IEnumerable<Catalogo> ObtenerCatalogosPorProveedor(int idProveedor);
+
+        IEnumerable<Catalogo> ObtenerCatalogosPorProducto(int idProducto);
 
         Catalogo ObtenerCatalogo(int idProveedor, int idProducto);
 

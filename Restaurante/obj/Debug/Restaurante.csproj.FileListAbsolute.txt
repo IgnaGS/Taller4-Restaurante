@@ -166,7 +166,6 @@ C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Restaurante\bin\Newtonsoft.Json.
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Restaurante\bin\Antlr3.Runtime.pdb
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Restaurante\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Restaurante\obj\Debug\Restaurante.csprojAssemblyReference.cache
-C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Restaurante\obj\Debug\Restaurante.csproj.CoreCompileInputs.cache
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Restaurante\obj\Debug\Restaurante.csproj.CopyComplete
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Restaurante\obj\Debug\Restaurante.dll
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Restaurante\obj\Debug\Restaurante.pdb

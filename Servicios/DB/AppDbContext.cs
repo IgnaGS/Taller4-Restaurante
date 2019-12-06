@@ -37,7 +37,7 @@ namespace Servicios.DB
             modelBuilder.Entity<Catalogo>().Property(catalogo => catalogo.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Catalogo>().HasRequired(catalogo => catalogo.Proveedor);
             modelBuilder.Entity<Catalogo>().HasRequired(catalogo => catalogo.Producto);
-
+         
             #endregion
 
             #region Empleados

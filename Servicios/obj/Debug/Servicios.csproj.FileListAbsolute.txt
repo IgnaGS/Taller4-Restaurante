@@ -24,7 +24,6 @@ C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Servicios\bin\Debug\Domain.dll.c
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Servicios\bin\Debug\EntityFramework.xml
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Servicios\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
-C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Servicios\obj\Debug\Servicios.csproj.CopyComplete
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Servicios\obj\Debug\Servicios.dll
 C:\Users\Nacho\Source\Repos\Taller4-Restaurante\Servicios\obj\Debug\Servicios.pdb

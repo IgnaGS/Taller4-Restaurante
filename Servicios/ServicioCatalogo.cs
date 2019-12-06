@@ -13,58 +13,60 @@ namespace Servicios
 {
     public class ServicioCatalogo : IServicioCatalogo
     {
-        public IEnumerable<Catalogo> ObtenerCatalogos(int idProveedor)
+        public IEnumerable<Catalogo> ObtenerCatalogosPorProveedor(int idProveedor)
         {
-            using (var db = new AppDbContext())
-            {
-                return db.Catalogos
-                    .Where(c => c.Proveedor.Id == idProveedor && c.Producto.Disponible.Equals("SI"))
-                    .Include(x => x.Producto)
-                    .Include(x => x.Proveedor)
-                    .ToList();
-            }
+            using var db = new AppDbContext();
+            return db.Catalogos
+                        .Where(c => c.Proveedor.Id == idProveedor && c.Producto.Disponible.Equals("SI"))
+                        .Include(x => x.Producto)
+                        .Include(x => x.Proveedor)
+                        .ToList();
+        }
+
+        public IEnumerable<Catalogo> ObtenerCatalogosPorProducto(int idProducto)
+        {
+            using var db = new AppDbContext();
+            return db.Catalogos
+                        .Where(c => c.Producto.Id == idProducto && c.Producto.Disponible.Equals("SI"))
+                        .Include(x => x.Producto)
+                        .Include(x => x.Proveedor)
+                        .ToList();
         }
 
         public Catalogo ObtenerCatalogo(int idProveedor, int idProducto)
         {
-            using (var db = new AppDbContext())
-            {
-                return db.Catalogos.FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
-            }
+            using var db = new AppDbContext() ;
+            return db.Catalogos.FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
         }
 
         public void AddCatalogo(int idProveedor, int idProducto)
         {
-            using (var db = new AppDbContext())
+            using var db = new AppDbContext();
+            var producto = db.Productos.Find(idProducto);
+            var proveedor = db.Proveedores.Find(idProveedor);
+
+            var catalogo = new Catalogo()
             {
-                var producto = db.Productos.Find(idProducto);
-                var proveedor = db.Proveedores.Find(idProveedor);
+                Producto = producto,
+                Proveedor = proveedor
+            };
 
-                var catalogo = new Catalogo()
-                {
-                    Producto = producto,
-                    Proveedor = proveedor
-                };
+            db.Catalogos.AddOrUpdate(catalogo);
 
-                db.Catalogos.AddOrUpdate(catalogo);
+            db.Productos.Attach(producto);
+            db.Proveedores.Attach(proveedor);
 
-                db.Productos.Attach(producto);
-                db.Proveedores.Attach(proveedor);
-
-                db.SaveChanges();
-            }
+            db.SaveChanges();
         }
 
         public void DeleteCatalogo(int idProveedor, int idProducto)
         {
-            using (var db = new AppDbContext())
-            {
-                var catalogo = db.Catalogos.FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
+            using var db = new AppDbContext();
+            var catalogo = db.Catalogos.FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
 
-                db.Catalogos.Remove(catalogo);
+            db.Catalogos.Remove(catalogo);
 
-                db.SaveChanges();
-            }
+            db.SaveChanges();
         }
     }
 }

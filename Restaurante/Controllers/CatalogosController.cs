@@ -36,7 +36,7 @@ namespace Restaurante.Controllers
             var model = new CatalogosViewModel()
             {
                 IdProveedor = idProveedor,
-                Catalogos = _ServicioCatalogo.ObtenerCatalogos(idProveedor).Select(x => new CatalogoViewItem(x))
+                Catalogos = _ServicioCatalogo.ObtenerCatalogosPorProveedor(idProveedor).Select(x => new CatalogoViewItem(x))
             };
 
             return View(model);
