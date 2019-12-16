@@ -21,6 +21,13 @@
     @if (Model.Catalogos.Any())
     {
         <div class="card">
+            @*<div class="form-group">
+                    <label for="Producto">Producto</label>
+                    
+                       @Html.DropDownListFor(x => x.IdProveedor,
+                        new SelectList(@Model.Catalogos),
+                        "Seleccione un Producto")
+            </div>*@
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead class="thead-dark">
@@ -40,6 +47,10 @@
                                         Eliminar Producto del Catálogo
                                     </a>
                                 </td>
+                                @*<td><a href="@Url.Action("Eliminar", "Catalogos", Catalogo)">
+                                        Eliminar Producto del Catálogo
+                                    </a>
+                                </td>*@
                             </tr>
                         }
                     </tbody>

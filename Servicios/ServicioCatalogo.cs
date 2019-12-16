@@ -39,6 +39,18 @@ namespace Servicios
             return db.Catalogos.FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
         }
 
+        public IEnumerable<Producto> ObtenerProductosFueraDeCatalogoProveedor(int idProveedor)
+        {
+            using var db = new AppDbContext(); 
+            return db.Productos
+                        .Where(p => p.Disponible.Equals("SI"))
+                        .ToList().Except(db.Catalogos
+                                                .Where(c => c.Proveedor.Id == idProveedor)
+                                                .Select(c=>c.Producto)
+                                                .ToList()
+                                                );
+        }
+
         public void AddCatalogo(int idProveedor, int idProducto)
         {
             using var db = new AppDbContext();
@@ -68,5 +80,16 @@ namespace Servicios
 
             db.SaveChanges();
         }
+
+        public void DeleteCatalogo(int idCatalogo)
+        {
+            using var db = new AppDbContext();
+            var catalogo = db.Catalogos.FirstOrDefault(c => c.Id == idCatalogo);
+
+            db.Catalogos.Remove(catalogo);
+
+            db.SaveChanges();
+        }
+
     }
 }

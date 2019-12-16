@@ -7,6 +7,7 @@ using Servicios;
 using Servicios.Interfaces;
 using System.Web.Mvc;
 using Restaurante.ViewModels.Catalogos;
+using Restaurante.ViewModels.Productos;
 
 namespace Restaurante.Controllers
 {
@@ -52,7 +53,8 @@ namespace Restaurante.Controllers
         {
             return View( new NuevoCatalogoViewModel()
             {
-                IdProveedor = idProveedor
+                IdProveedor = idProveedor,
+                Productos = _ServicioCatalogo.ObtenerProductosFueraDeCatalogoProveedor(idProveedor).Select(p => new ProductoViewItem(p))
             } );
         }
 
@@ -121,6 +123,40 @@ namespace Restaurante.Controllers
 
             return View(model);
         }
+
+        #endregion
+
+        #region Eliminar_2
+
+        //[HttpGet]
+        //[Route("Eliminar")]
+        //public ActionResult Eliminar(CatalogoViewItem Catalogo)
+        //{
+        //    return View(Catalogo);
+        //}
+
+        //[HttpPost]
+        //[Route("Eliminar", Name = "Catalogos_Eliminar")]
+        //public ActionResult Eliminar2(CatalogoViewItem model)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            _ServicioCatalogo.DeleteCatalogo(
+        //                idCatalogo: model.Id
+        //                );
+
+        //            return RedirectToAction("Index");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ModelState.AddModelError("", ex.Message);
+        //    }
+
+        //    return View(model);
+        //}
 
         #endregion
     }

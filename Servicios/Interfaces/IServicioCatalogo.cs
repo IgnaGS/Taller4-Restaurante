@@ -15,8 +15,12 @@ namespace Servicios.Interfaces
 
         Catalogo ObtenerCatalogo(int idProveedor, int idProducto);
 
+        IEnumerable<Producto> ObtenerProductosFueraDeCatalogoProveedor(int idProveedor);
+
         void AddCatalogo(int idProducto, int idProveedor);
 
         void DeleteCatalogo(int idProducto, int idProveedor);
+
+        void DeleteCatalogo(int idCatalogo);
     }
 }
