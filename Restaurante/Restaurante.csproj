@@ -129,6 +129,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\CatalogosController.cs" />
+    <Compile Include="Controllers\OrdenesComprasController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -143,6 +144,9 @@
     <Compile Include="ViewModels\Productos\NuevoProductoViewModel.cs" />
     <Compile Include="ViewModels\Productos\ProductosViewModel.cs" />
     <Compile Include="ViewModels\Productos\ProductoViewItem.cs" />
+    <Compile Include="ViewModels\OrdenesCompras\NuevaOrdenCompraViewModel.cs" />
+    <Compile Include="ViewModels\OrdenesCompras\OrdenesComprasViewModel.cs" />
+    <Compile Include="ViewModels\OrdenesCompras\OrdenCompraViewItem.cs" />
     <Compile Include="ViewModels\Proveedores\NuevoProveedorViewModel.cs" />
     <Compile Include="ViewModels\Proveedores\ProveedoresViewModel.cs" />
     <Compile Include="ViewModels\Proveedores\ProveedorViewItem.cs" />
@@ -201,6 +205,10 @@
     <Content Include="Views\Empleados\Index.cshtml" />
     <Content Include="Views\Catalogos\Nuevo.cshtml" />
     <Content Include="Views\Catalogos\Index.cshtml" />
+    <Content Include="Views\OrdenesCompras\Concretar.cshtml" />
+    <Content Include="Views\OrdenesCompras\Index.cshtml" />
+    <Content Include="Views\OrdenesCompras\Nueva.cshtml" />
+    <Content Include="Views\OrdenesCompras\Cancelar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

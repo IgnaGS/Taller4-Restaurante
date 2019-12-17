@@ -41,11 +41,10 @@ namespace Servicios
             }
         }
 
-        public void UpdateStock(int id, int idProducto, int cantidad)
+        public void UpdateStock(int idProducto, int cantidad)
         {
             using (var db = new AppDbContext())
             {
-                //var stock = db.Stocks.Find(id);
                 var stock = ObtenerStock(idProducto);
 
                 stock.Cantidad += cantidad;
