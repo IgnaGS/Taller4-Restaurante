@@ -11,13 +11,14 @@
 
 <div class="container">
     <h4 class="text-center mt-5">
-        Nuevo Proveedor
+        Nuevo Catálogo
     </h4>
 
     <div class="row">
         <div class="offset-3 col-6">
             @using (Html.BeginForm("Nuevo", "Catalogos", FormMethod.Post))
             {
+                @Html.HiddenFor(x => x.IdProveedor)
                 <div class="form-group">
                     <label for="Proveedor">Proveedor</label>
                         @* Acá podría mostrar el nombre del proveedor, de forma orientativa
@@ -26,31 +27,10 @@
                 </div>
                 <div class="form-group">
                     <label for="Producto">Producto</label>
-                    @* Acá habría que poner un desplegable con todos los productos que ese proveedor actualmente no tenga *@
-
-                    @*@Html.DropDownListFor(x => x.Productos,
-                    new SelectList(Model.Productos,"Id","Descripcion",Model.Productos),*@
-                    
-                    @Html.DropDownListFor(model => model.IdProducto,
-                        new SelectList(
-                        new List<Object>{
-                            new { value = 0 , text = "Red"  },
-                            new { value = 1 , text = "Blue" },
-                            new { value = 2 , text = "Green"}
-                            //foreach (var Producto in Model.Productos.OrderBy(Producto => Producto.Descripcion))
-                            //{
-                            //    new { Id = Producto.Id, Descripcion = Producto.Descripcion }
-                            //}
-                        },
-                        "Id",
-                        "Descripcion",
-                        Model.Productos
-                     ),
-
-                         "Seleccione un Producto")
+                    @Html.DropDownListFor(model => model.IdProducto, Model.Productos)
                 </div>
 
-                @Html.ValidationMessage("", new { @class = "text-danger" })
+                <span class="text-danger">@ViewBag.ErrorMessage</span>
                 <button type="submit" class="btn btn-dark">
                     Confirmar
                 </button>

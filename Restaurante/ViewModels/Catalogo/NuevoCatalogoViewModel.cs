@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Domain;
-using Restaurante.ViewModels.Productos;
+﻿using System.Web.Mvc;
 
 namespace Restaurante.ViewModels.Catalogos
 {
@@ -11,7 +6,7 @@ namespace Restaurante.ViewModels.Catalogos
     {
         public int IdProveedor { get; set; }
         public int IdProducto { get; set; }
-        public IEnumerable<ProductoViewItem> Productos { get; set; }
+        public SelectList Productos { get; set; }
 
         public NuevoCatalogoViewModel()
         {

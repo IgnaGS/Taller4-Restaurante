@@ -17,9 +17,9 @@ namespace Servicios
         {
             var db = new AppDbContext();
             return db.Catalogos
-                        .Where(c => c.Proveedor.Id == idProveedor && c.Producto.Disponible.Equals("SI"))
                         .Include(x => x.Producto)
                         .Include(x => x.Proveedor)
+                        .Where(c => c.ProveedorId == idProveedor && c.Producto.Disponible.Equals("SI"))
                         .ToList();
         }
 
@@ -36,7 +36,18 @@ namespace Servicios
         public Catalogo ObtenerCatalogo(int idProveedor, int idProducto)
         {
             var db = new AppDbContext() ;
-            return db.Catalogos.FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
+            return db.Catalogos
+                .Include(x => x.Producto)
+                .Include(x => x.Proveedor)
+                .FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
+        }
+
+        public Catalogo ObtenerCatalogo(int id)
+        {
+            using (var db = new AppDbContext())
+            {
+                return db.Catalogos.Find(id);
+            }
         }
 
         public IEnumerable<Producto> ObtenerProductosFueraDeCatalogoProveedor(int idProveedor)
@@ -71,20 +82,10 @@ namespace Servicios
             db.SaveChanges();
         }
 
-        public void DeleteCatalogo(int idProveedor, int idProducto)
-        {
-            var db = new AppDbContext();
-            var catalogo = db.Catalogos.FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
-
-            db.Catalogos.Remove(catalogo);
-
-            db.SaveChanges();
-        }
-
         public void DeleteCatalogo(int idCatalogo)
         {
             var db = new AppDbContext();
-            var catalogo = db.Catalogos.FirstOrDefault(c => c.Id == idCatalogo);
+            var catalogo = db.Catalogos.Find(idCatalogo);
 
             db.Catalogos.Remove(catalogo);
 

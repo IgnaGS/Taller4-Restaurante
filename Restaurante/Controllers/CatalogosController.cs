@@ -51,22 +51,21 @@ namespace Restaurante.Controllers
         [Route("Nuevo", Name = "Catalogos_Nuevo")]
         public ActionResult Nuevo(int idProveedor)
         {
-            return View( new NuevoCatalogoViewModel()
+            var model = new NuevoCatalogoViewModel()
             {
                 IdProveedor = idProveedor,
-                Productos = _ServicioCatalogo.ObtenerProductosFueraDeCatalogoProveedor(idProveedor).Select(p => new ProductoViewItem(p))
-            } );
+                Productos = new SelectList(_ServicioCatalogo.ObtenerProductosFueraDeCatalogoProveedor(idProveedor), "Id", "Descripcion")
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         [Route("Nuevo", Name = "Catalogos_Nuevo_Post")]
         public ActionResult Nuevo(NuevoCatalogoViewModel model)
         {
-            if (model.IdProveedor <= 0)
-                ModelState.AddModelError("IdProveedor", "Debe seleccionar el Proveedor del Catálogo");
-
             if (model.IdProducto <= 0)
-                ModelState.AddModelError("IdProducto", "Debe seleccionar el Producto del Catalogo");
+                ViewBag.ErrorMessage = "Debe seleccionar el Producto del Catalogo";
 
             try
             {
@@ -77,13 +76,15 @@ namespace Restaurante.Controllers
                         idProducto: model.IdProducto
                         );
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { idProveedor = model.IdProveedor });
                 }
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", ex.Message);
+                ViewBag.ErrorMessage = ex.Message;
             }
+
+            model.Productos = new SelectList(_ServicioCatalogo.ObtenerProductosFueraDeCatalogoProveedor(model.IdProveedor), "Id", "Descripcion");
 
             return View(model);
         }
@@ -102,26 +103,21 @@ namespace Restaurante.Controllers
 
         [HttpPost]
         [Route("Eliminar", Name = "Catalogos_Eliminar")]
-        public ActionResult Eliminar(CatalogoViewItem model)
+        public ActionResult Eliminar(int id)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    _ServicioCatalogo.DeleteCatalogo(
-                        idProveedor: model.IdProveedor,
-                        idProducto: model.IdProducto
-                        );
+                var catalogo = _ServicioCatalogo.ObtenerCatalogo(id);
+                _ServicioCatalogo.DeleteCatalogo(catalogo.Id);
 
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Index", new { idProveedor = catalogo.ProveedorId });
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", ex.Message);
+                ViewBag.ErrorMessage = ex.Message;
             }
 
-            return View(model);
+            return View();
         }
 
         #endregion
