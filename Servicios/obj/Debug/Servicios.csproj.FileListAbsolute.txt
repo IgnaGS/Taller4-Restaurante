@@ -42,3 +42,17 @@ C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\Domain
 C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\EntityFramework.xml
 C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\PC10\source\repos\IgnaGS\Taller4-Restaurante\Servicios\obj\Debug\Servicios.csproj.CopyComplete
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\Servicios.dll.config
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\Servicios.dll
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\Servicios.pdb
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\Domain.dll
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\EntityFramework.dll
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\Domain.pdb
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\Domain.dll.config
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\EntityFramework.xml
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\obj\Debug\Servicios.csproj.CopyComplete
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\obj\Debug\Servicios.dll
+C:\Users\ignam\source\repos\IgnaGS\Taller4-Restaurante\Servicios\obj\Debug\Servicios.pdb

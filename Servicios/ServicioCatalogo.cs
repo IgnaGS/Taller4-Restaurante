@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Servicios.Interfaces;
 using Servicios.DB;
 using Domain;
@@ -15,31 +12,37 @@ namespace Servicios
     {
         public IEnumerable<Catalogo> ObtenerCatalogosPorProveedor(int idProveedor)
         {
-            var db = new AppDbContext();
-            return db.Catalogos
-                        .Include(x => x.Producto)
-                        .Include(x => x.Proveedor)
-                        .Where(c => c.ProveedorId == idProveedor && c.Producto.Disponible.Equals("SI"))
-                        .ToList();
+            using (var db = new AppDbContext())
+            {
+                return db.Catalogos
+                            .Include(x => x.Producto)
+                            .Include(x => x.Proveedor)
+                            .Where(c => c.ProveedorId == idProveedor && c.Producto.Disponible.Equals("SI"))
+                            .ToList();
+            }
         }
 
         public IEnumerable<Catalogo> ObtenerCatalogosPorProducto(int idProducto)
         {
-            var db = new AppDbContext();
-            return db.Catalogos
-                        .Where(c => c.Producto.Id == idProducto && c.Producto.Disponible.Equals("SI"))
-                        .Include(x => x.Producto)
-                        .Include(x => x.Proveedor)
-                        .ToList();
+            using (var db = new AppDbContext())
+            {
+                return db.Catalogos
+                            .Where(c => c.Producto.Id == idProducto && c.Producto.Disponible.Equals("SI"))
+                            .Include(x => x.Producto)
+                            .Include(x => x.Proveedor)
+                            .ToList();
+            }
         }
 
         public Catalogo ObtenerCatalogo(int idProveedor, int idProducto)
         {
-            var db = new AppDbContext() ;
-            return db.Catalogos
-                .Include(x => x.Producto)
-                .Include(x => x.Proveedor)
-                .FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
+            using (var db = new AppDbContext())
+            {
+                return db.Catalogos
+                    .Include(x => x.Producto)
+                    .Include(x => x.Proveedor)
+                    .FirstOrDefault(c => c.Proveedor.Id == idProveedor && c.Producto.Id == idProducto);
+            }
         }
 
         public Catalogo ObtenerCatalogo(int id)
@@ -52,14 +55,16 @@ namespace Servicios
 
         public IEnumerable<Producto> ObtenerProductosFueraDeCatalogoProveedor(int idProveedor)
         {
-            var db = new AppDbContext(); 
-            return db.Productos
-                        .Where(p => p.Disponible.Equals("SI"))
-                        .ToList().Except(db.Catalogos
-                                                .Where(c => c.Proveedor.Id == idProveedor)
-                                                .Select(c=>c.Producto)
-                                                .ToList()
-                                                );
+            using (var db = new AppDbContext())
+            {
+                return db.Productos
+                            .Where(p => p.Disponible.Equals("SI"))
+                            .ToList().Except(db.Catalogos
+                                                    .Where(c => c.Proveedor.Id == idProveedor)
+                                                    .Select(c => c.Producto)
+                                                    .ToList()
+                                                    );
+            }
         }
 
         public void AddCatalogo(int idProveedor, int idProducto)

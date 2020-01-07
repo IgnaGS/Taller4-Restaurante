@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Domain;
 using Servicios;
 using Servicios.Interfaces;
 using System.Web.Mvc;
 using Restaurante.ViewModels.Catalogos;
-using Restaurante.ViewModels.Productos;
 
 namespace Restaurante.Controllers
 {
@@ -32,11 +28,12 @@ namespace Restaurante.Controllers
 
         [HttpGet]
         [Route(Name = "Catalogos_Index")]
-        public ActionResult Index(int idProveedor)
+        public ActionResult Index(int idProveedor, string proveedor)
         {
             var model = new CatalogosViewModel()
             {
                 IdProveedor = idProveedor,
+                Proveedor = proveedor,
                 Catalogos = _ServicioCatalogo.ObtenerCatalogosPorProveedor(idProveedor).Select(x => new CatalogoViewItem(x))
             };
 
@@ -49,11 +46,12 @@ namespace Restaurante.Controllers
 
         [HttpGet]
         [Route("Nuevo", Name = "Catalogos_Nuevo")]
-        public ActionResult Nuevo(int idProveedor)
+        public ActionResult Nuevo(int idProveedor, string proveedor)
         {
             var model = new NuevoCatalogoViewModel()
             {
                 IdProveedor = idProveedor,
+                Proveedor = proveedor,
                 Productos = new SelectList(_ServicioCatalogo.ObtenerProductosFueraDeCatalogoProveedor(idProveedor), "Id", "Descripcion")
             };
 
@@ -65,7 +63,7 @@ namespace Restaurante.Controllers
         public ActionResult Nuevo(NuevoCatalogoViewModel model)
         {
             if (model.IdProducto <= 0)
-                ViewBag.ErrorMessage = "Debe seleccionar el Producto del Catalogo";
+                ViewBag.ErrorMessage = "Debe seleccionar un Producto de la lista";
 
             try
             {
@@ -122,38 +120,5 @@ namespace Restaurante.Controllers
 
         #endregion
 
-        #region Eliminar_2
-
-        //[HttpGet]
-        //[Route("Eliminar")]
-        //public ActionResult Eliminar(CatalogoViewItem Catalogo)
-        //{
-        //    return View(Catalogo);
-        //}
-
-        //[HttpPost]
-        //[Route("Eliminar", Name = "Catalogos_Eliminar")]
-        //public ActionResult Eliminar2(CatalogoViewItem model)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            _ServicioCatalogo.DeleteCatalogo(
-        //                idCatalogo: model.Id
-        //                );
-
-        //            return RedirectToAction("Index");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ModelState.AddModelError("", ex.Message);
-        //    }
-
-        //    return View(model);
-        //}
-
-        #endregion
     }
 }

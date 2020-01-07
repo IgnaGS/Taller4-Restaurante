@@ -6,13 +6,13 @@
 
 <div class="container" >
     <h4 class="text-center mt-5">
-        Catálogos       @*Acá me gustaría poner el nombre del Proveedor. Con el ID lo puedo traer desde el domino o necesito mandarlo dentro del modelo?*@
+        Catálogo de productos de @Model.Proveedor
     </h4>
 
     <div class="row my-5">
         <div class="col-2">
             <a class="btn btn-dark form-control text-right"
-               href="@Url.Action("Nuevo","Catalogos", new { idProveedor = Model.IdProveedor})"> @*Acá se llama a la vista para crear un Catalogo*@
+               href="@Url.Action("Nuevo","Catalogos", new { idProveedor = Model.IdProveedor, proveedor = Model.Proveedor})"> @*Acá se llama a la vista para crear un Catalogo*@
                 Agregar producto
             </a>
         </div>
@@ -47,10 +47,6 @@
                                         Eliminar Producto del Catálogo
                                     </a>
                                 </td>
-                                @*<td><a href="@Url.Action("Eliminar", "Catalogos", Catalogo)">
-                                        Eliminar Producto del Catálogo
-                                    </a>
-                                </td>*@
                             </tr>
                         }
                     </tbody>
