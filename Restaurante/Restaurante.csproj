@@ -201,6 +201,7 @@
     <Content Include="Views\Empleados\Index.cshtml" />
     <Content Include="Views\Catalogos\Nuevo.cshtml" />
     <Content Include="Views\Catalogos\Index.cshtml" />
+    <Content Include="Views\Catalogos\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

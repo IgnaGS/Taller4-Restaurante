@@ -24,6 +24,8 @@ namespace Restaurante.ViewModels.Catalogos
         public CatalogoViewItem(Catalogo Catalogo)
         {
             Id = Catalogo.Id;
+            IdProveedor = Catalogo.Proveedor.Id;
+            IdProducto = Catalogo.Producto.Id;
             Proveedor = Catalogo.Proveedor.Descripcion;
             Producto = Catalogo.Producto.Descripcion;
         }

@@ -6,13 +6,13 @@
 
 <div class="container" >
     <h4 class="text-center mt-5">
-        Catálogos
+        Catálogo de productos de @Model.Proveedor
     </h4>
 
     <div class="row my-5">
         <div class="col-2">
             <a class="btn btn-dark form-control text-right"
-               href="@Url.Action("Nuevo","Catalogos", new { idProveedor = Model.IdProveedor})"> @*Acá se llama a la vista para crear un Catalogo*@
+               href="@Url.Action("Nuevo","Catalogos", new { idProveedor = Model.IdProveedor, proveedor = Model.Proveedor})"> @*Acá se llama a la vista para crear un Catalogo*@
                 Agregar producto
             </a>
         </div>
@@ -21,11 +21,18 @@
     @if (Model.Catalogos.Any())
     {
         <div class="card">
+            @*<div class="form-group">
+                    <label for="Producto">Producto</label>
+                    
+                       @Html.DropDownListFor(x => x.IdProveedor,
+                        new SelectList(@Model.Catalogos),
+                        "Seleccione un Producto")
+            </div>*@
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Procuto</th>
+                            <th scope="col">Producto</th>
 
                             <th scope="col"> </th>
                         </tr>

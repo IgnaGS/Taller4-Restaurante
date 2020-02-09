@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Domain;
 
 namespace Servicios.Interfaces
 {
     public interface IServicioCatalogo
     {
-        IEnumerable<Catalogo> ObtenerCatalogos(int idProveedor);
+        IEnumerable<Catalogo> ObtenerCatalogosPorProveedor(int idProveedor);
+
+        IEnumerable<Catalogo> ObtenerCatalogosPorProducto(int idProducto);
 
         Catalogo ObtenerCatalogo(int idProveedor, int idProducto);
 
-        void AddCatalogo(int idProducto, int idProveedor);
+        Catalogo ObtenerCatalogo(int id);
 
-        void DeleteCatalogo(int idProducto, int idProveedor);
+        IEnumerable<Producto> ObtenerProductosFueraDeCatalogoProveedor(int idProveedor);
+
+        void AddCatalogo(int idProveedor, int idProducto);
+
+        void DeleteCatalogo(int idCatalogo);
     }
 }

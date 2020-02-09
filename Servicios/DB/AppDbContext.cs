@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain;
 
 namespace Servicios.DB
@@ -37,7 +32,7 @@ namespace Servicios.DB
             modelBuilder.Entity<Catalogo>().Property(catalogo => catalogo.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Catalogo>().HasRequired(catalogo => catalogo.Proveedor);
             modelBuilder.Entity<Catalogo>().HasRequired(catalogo => catalogo.Producto);
-
+         
             #endregion
 
             #region Empleados

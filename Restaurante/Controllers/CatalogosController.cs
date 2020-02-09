@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Domain;
 using Servicios;
 using Servicios.Interfaces;
 using System.Web.Mvc;
@@ -31,12 +28,13 @@ namespace Restaurante.Controllers
 
         [HttpGet]
         [Route(Name = "Catalogos_Index")]
-        public ActionResult Index(int idProveedor)
+        public ActionResult Index(int idProveedor, string proveedor)
         {
             var model = new CatalogosViewModel()
             {
                 IdProveedor = idProveedor,
-                Catalogos = _ServicioCatalogo.ObtenerCatalogos(idProveedor).Select(x => new CatalogoViewItem(x))
+                Proveedor = proveedor,
+                Catalogos = _ServicioCatalogo.ObtenerCatalogosPorProveedor(idProveedor).Select(x => new CatalogoViewItem(x))
             };
 
             return View(model);
@@ -48,23 +46,24 @@ namespace Restaurante.Controllers
 
         [HttpGet]
         [Route("Nuevo", Name = "Catalogos_Nuevo")]
-        public ActionResult Nuevo(int idProveedor)
+        public ActionResult Nuevo(int idProveedor, string proveedor)
         {
-            return View( new NuevoCatalogoViewModel()
+            var model = new NuevoCatalogoViewModel()
             {
-                IdProveedor = idProveedor
-            } );
+                IdProveedor = idProveedor,
+                Proveedor = proveedor,
+                Productos = new SelectList(_ServicioCatalogo.ObtenerProductosFueraDeCatalogoProveedor(idProveedor), "Id", "Descripcion")
+            };
+
+            return View(model);
         }
 
         [HttpPost]
         [Route("Nuevo", Name = "Catalogos_Nuevo_Post")]
         public ActionResult Nuevo(NuevoCatalogoViewModel model)
         {
-            if (model.IdProveedor <= 0)
-                ModelState.AddModelError("IdProveedor", "Debe seleccionar el Proveedor del Catálogo");
-
             if (model.IdProducto <= 0)
-                ModelState.AddModelError("IdProducto", "Debe seleccionar el Producto del Catalogo");
+                ViewBag.ErrorMessage = "Debe seleccionar un Producto de la lista";
 
             try
             {
@@ -75,13 +74,15 @@ namespace Restaurante.Controllers
                         idProducto: model.IdProducto
                         );
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { idProveedor = model.IdProveedor });
                 }
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", ex.Message);
+                ViewBag.ErrorMessage = ex.Message;
             }
+
+            model.Productos = new SelectList(_ServicioCatalogo.ObtenerProductosFueraDeCatalogoProveedor(model.IdProveedor), "Id", "Descripcion");
 
             return View(model);
         }
@@ -100,28 +101,24 @@ namespace Restaurante.Controllers
 
         [HttpPost]
         [Route("Eliminar", Name = "Catalogos_Eliminar")]
-        public ActionResult Eliminar(CatalogoViewItem model)
+        public ActionResult Eliminar(int id)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    _ServicioCatalogo.DeleteCatalogo(
-                        idProveedor: model.IdProveedor,
-                        idProducto: model.IdProducto
-                        );
+                var catalogo = _ServicioCatalogo.ObtenerCatalogo(id);
+                _ServicioCatalogo.DeleteCatalogo(catalogo.Id);
 
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Index", new { idProveedor = catalogo.ProveedorId });
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError("", ex.Message);
+                ViewBag.ErrorMessage = ex.Message;
             }
 
-            return View(model);
+            return View();
         }
 
         #endregion
+
     }
 }

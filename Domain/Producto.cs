@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain
+﻿namespace Domain
 {
     public class Producto
     {
@@ -12,5 +6,7 @@ namespace Domain
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public string Disponible { get; set; }
+
+      //  public virtual ICollection<Proveedor> Proveedores {get; set; }
     }
 }

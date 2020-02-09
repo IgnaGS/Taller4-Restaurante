@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Domain;
 using Servicios;
 using Servicios.Interfaces;
 using System.Web.Mvc;
@@ -37,7 +34,6 @@ namespace Restaurante.Controllers
             {
                 Productos = _ServicioProducto.ObtenerProductos().Select(x => new ProductoViewItem(x))
             };
-
             return View(model);
         }
 

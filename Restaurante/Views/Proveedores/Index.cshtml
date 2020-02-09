@@ -52,7 +52,7 @@
                                 <td>@Proveedor.Telefono</td>
                                 <td>@Proveedor.FechaAlta</td>
                                 <td>@Proveedor.Disponible</td>
-                                <td><a href="@Url.Action("Index", "Catalogos", new { idProveedor = Proveedor.Id})" @*Acá se llama a la vista para ver los catálogos de un Proveedor*@>
+                                <td><a href="@Url.Action("Index", "Catalogos", new { idProveedor = Proveedor.Id, proveedor = Proveedor.Descripcion})" @*Acá se llama a la vista para ver los catálogos de un Proveedor*@>
                                         Ver Catálogo
                                     </a>
                                 </td>

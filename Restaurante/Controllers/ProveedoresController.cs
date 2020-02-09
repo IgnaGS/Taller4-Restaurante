@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Domain;
 using Servicios;
 using Servicios.Interfaces;
 using System.Web.Mvc;
@@ -57,7 +54,7 @@ namespace Restaurante.Controllers
         public ActionResult Nuevo(NuevoProveedorViewModel model)
         {
             if (string.IsNullOrWhiteSpace(model.Descripcion))
-                ModelState.AddModelError("Descripción", "Debe ingresar la descripción del proveedor.");
+                ModelState.AddModelError("Descripcion", "Debe ingresar la descripción del proveedor.");
 
             if (string.IsNullOrWhiteSpace(model.Direccion))
                 ModelState.AddModelError("Direccion", "Debe ingresar la dirección del proveedor.");
@@ -111,7 +108,7 @@ namespace Restaurante.Controllers
         public ActionResult Editar(ProveedorViewItem model)
         {
             if (string.IsNullOrWhiteSpace(model.Descripcion))
-                ModelState.AddModelError("Descripción", "Debe ingresar la descripción del proveedor.");
+                ModelState.AddModelError("Descripcion", "Debe ingresar la descripción del proveedor.");
 
             if (string.IsNullOrWhiteSpace(model.Direccion))
                 ModelState.AddModelError("Direccion", "Debe ingresar la dirección del proveedor.");

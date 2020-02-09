@@ -26,17 +26,17 @@
                 <div class="form-group">
                     <label for="Dirección">Direccion</label>
                     @Html.TextBoxFor(x => x.Direccion, new { @class = "form-control", placeholder = "Ingrese la Dirección del proveedor" })
-                    @Html.ValidationMessageFor(x => x.Descripcion, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(x => x.Direccion, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <label for="e-Mail">Mail</label>
                     @Html.TextBoxFor(x => x.Mail, new { @class = "form-control", placeholder = "Ingrese el correo electrónico del proveedor" })
-                    @Html.ValidationMessageFor(x => x.Descripcion, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(x => x.Mail, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <label for="Teléfono">Telefono</label>
                     @Html.TextBoxFor(x => x.Telefono, new { @class = "form-control", placeholder = "Ingrese el Teléfono del proveedor" })
-                    @Html.ValidationMessageFor(x => x.Descripcion, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(x => x.Telefono, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <label for="Disponible">Disponible</label>
@@ -44,6 +44,7 @@
                     Si: @Html.RadioButtonFor(x => x.Disponible, "SI")
                     <br />
                     No: @Html.RadioButtonFor(x => x.Disponible, "NO")
+                    <br />
                     @Html.ValidationMessageFor(x => x.Disponible, "", new { @class = "text-danger" })
                 </div>
                 @Html.ValidationMessage("", new { @class = "text-danger" })

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain;
 
 namespace Servicios.DB.Migrations
@@ -73,13 +70,13 @@ namespace Servicios.DB.Migrations
             #endregion
 
             #region Catalogo Seed
-
+         
             db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro1, Producto = producto1 });
             db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro1, Producto = producto2 });
             db.Catalogos.AddOrUpdate(new Catalogo() { Proveedor = proveedro2, Producto = producto2 });
 
             db.SaveChanges();
-
+         
             #endregion
 
             #region Orden de Compra Seed
