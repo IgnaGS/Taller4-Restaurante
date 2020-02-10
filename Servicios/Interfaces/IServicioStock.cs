@@ -8,6 +8,6 @@ namespace Servicios.Interfaces
 
         void AddStock(int idProducto, int cantidad);
 
-        void UpdateStock(int id, int idProducto, int cantidad);
+        void UpdateStock(int idProducto, int cantidad);
     }
 }

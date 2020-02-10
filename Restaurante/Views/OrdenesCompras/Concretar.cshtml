@@ -1,0 +1,57 @@
+﻿@model Restaurante.ViewModels.OrdenesCompras.OrdenCompraViewItem
+
+@{
+    ViewBag.Title = "Concretar";
+}
+
+<div class="container">
+    <h4 class="text-center mt-5">
+        Desea concretar la siguiente Orden de Compra:
+    </h4>
+
+    <div class="row">
+        <div class="offset-3 col-6">
+            @using (Html.BeginForm("Concretar", "OrdenesCompras", FormMethod.Post))
+            {
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Empleado</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Proveedor</th>
+                                    <th scope="col">Fecha Entrega</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col"> </th>
+                                    <th scope="col"> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>@Model.Id</td>
+                                    <td>@Model.Empleado.Nombre</td>
+                                    <td>@Model.Producto.Descripcion</td>
+                                    <td>@Model.Cantidad</td>
+                                    <td>@Model.Proveedor.Descripcion</td>
+                                    <td>@Model.FechaEntrega</td>
+                                    <td>@Model.Estado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                @Html.ValidationMessage("", new { @class = "text-danger" })
+                <button type="submit" class="btn btn-dark">
+                    Confirmar
+                </button>
+                <a class="btn btn-outline-dark"
+                   href="@Url.Action("Index","OrdenesCompras")">
+                    Cancelar
+                </a>
+            }
+        </div>
+    </div>
+</div>
