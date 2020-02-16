@@ -40,7 +40,8 @@ namespace Servicios
         {
             using (var db = new AppDbContext())
             {
-                var stock = ObtenerStock(idProducto);
+                //var stock = ObtenerStock(idProducto);     // Tuve que cambiar esto porque la BD perdía la refencia al stock, entonces no actualizaba la cantidad
+                var stock = db.Stocks.FirstOrDefault(s => s.Producto.Id == idProducto);
 
                 stock.Cantidad += cantidad;
 

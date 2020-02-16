@@ -5,6 +5,7 @@ using Servicios.Interfaces;
 using Servicios.DB;
 using Domain;
 using System.Data.Entity.Migrations;
+using System.Data.Entity;
 
 namespace Servicios
 {
@@ -14,15 +15,24 @@ namespace Servicios
         {
             using (var db = new AppDbContext())
             {
-                return db.OrdenesCompras.ToList();
+                return db.OrdenesCompras
+                            .Include(x => x.Empleado)
+                            .Include(x => x.Producto)
+                            .Include(x => x.Proveedor)
+                            .ToList();
             }
         }
 
-        public OrdenCompra ObtenerOrdenCompra(int id)
+        public OrdenCompra ObtenerOrdenCompra(int idOrdenCompra)
         {
             using (var db = new AppDbContext())
             {
-                return db.OrdenesCompras.Find(id);
+                return db.OrdenesCompras
+                            .Include(x => x.Empleado)
+                            .Include(x => x.Producto)
+                            .Include(x => x.Proveedor)
+                            .FirstOrDefault(o => o.Id == idOrdenCompra);
+                //return db.OrdenesCompras.Find(idOrdenCompra);
             }
         }
 

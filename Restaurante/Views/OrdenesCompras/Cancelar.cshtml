@@ -13,6 +13,7 @@
         <div class="offset-3 col-6">
             @using (Html.BeginForm("Cancelar", "OrdenesCompras", FormMethod.Post))
             {
+                <input type="hidden" name="Id" value="@Model.Id" />
                 <div class="card">
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -32,10 +33,10 @@
                             <tbody>
                                 <tr>
                                     <td>@Model.Id</td>
-                                    <td>@Model.Empleado.Nombre</td>
-                                    <td>@Model.Producto.Descripcion</td>
+                                    <td>@Model.Empleado</td>
+                                    <td>@Model.Producto</td>
                                     <td>@Model.Cantidad</td>
-                                    <td>@Model.Proveedor.Descripcion</td>
+                                    <td>@Model.Proveedor</td>
                                     <td>@Model.FechaEntrega</td>
                                     <td>@Model.Estado</td>
                                 </tr>
@@ -43,7 +44,8 @@
                         </table>
                     </div>
                 </div>
-                @Html.ValidationMessage("", new { @class = "text-danger" })
+               // @Html.ValidationMessage("", new { @class = "text-danger" })
+                <span class="text-danger">@ViewBag.ErrorMessage</span>
                 <button type="submit" class="btn btn-dark">
                     Confirmar
                 </button>

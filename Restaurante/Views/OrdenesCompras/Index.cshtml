@@ -43,14 +43,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var OrdenCompra in Model.OrdenesCompras.OrderByDescending(OrdenCompra => OrdenCompra.Estado).ThenByDescending(OrdenCompra => OrdenCompra.FechaEntrega))
+                        @foreach (var OrdenCompra in Model.OrdenesCompras.OrderBy(OrdenCompra => OrdenCompra.Estado).ThenByDescending(OrdenCompra => OrdenCompra.FechaEntrega))
                         {
                             <tr>
                                 <td>@OrdenCompra.Id</td>
-                                <td>@OrdenCompra.Empleado.Nombre</td>
-                                <td>@OrdenCompra.Producto.Descripcion</td>
+                                <td>@OrdenCompra.Empleado</td>
+                                <td>@OrdenCompra.Producto</td>
                                 <td>@OrdenCompra.Cantidad</td>
-                                <td>@OrdenCompra.Proveedor.Descripcion</td>
+                                <td>@OrdenCompra.Proveedor</td>
                                 <td>@OrdenCompra.FechaEntrega</td>
                                 <td>@OrdenCompra.Estado</td>
 
@@ -58,6 +58,16 @@
                                 @if (@OrdenCompra.Estado.Equals("Activa"))
                                 {
                                     <td>
+                                        <a href="@Url.Action("Concretar", "OrdenesCompras", new { idOrdenCompra = OrdenCompra.Id })">
+                                            Concretar
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Cancelar", "OrdenesCompras", new { idOrdenCompra = OrdenCompra.Id })">
+                                            Cancelar
+                                        </a>
+                                    </td>
+                                   /* <td>
                                         <a class="btn btn-dark form-control text-right"
                                            href="@Url.Action("Concretar", "OrdenesCompras", new { idOrdenCompra = OrdenCompra.Id })">
                                             @*Acá se llama al controlador para concretar la Orden de Compra*@
@@ -70,7 +80,7 @@
                                             @*Acá se llama al controlador para cancelar la Orden de Compra*@
                                             Cancelar
                                         </a>
-                                    </td>
+                                    </td> */
                                 }
                             </tr>
                         }

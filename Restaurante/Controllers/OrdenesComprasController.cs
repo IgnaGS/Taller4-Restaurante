@@ -21,6 +21,7 @@ namespace Restaurante.Controllers
         public OrdenesComprasController()
         {
             _ServicioOrdenCompra = new ServicioOrdenCompra();
+            _ServicioStock = new ServicioStock();
         }
 
         #endregion
@@ -112,7 +113,7 @@ namespace Restaurante.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    _ServicioStock.UpdateStock(idProducto: model.Producto.Id, cantidad: model.Cantidad);
+                    _ServicioStock.UpdateStock(idProducto: model.IdProducto, cantidad: model.Cantidad);
                     _ServicioOrdenCompra.ContretarOrdenCompra(idOrdenCompra: model.Id);
 
                     return RedirectToAction("Index");
