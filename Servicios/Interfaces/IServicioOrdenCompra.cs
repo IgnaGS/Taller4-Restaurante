@@ -8,6 +8,8 @@ namespace Servicios.Interfaces
     {
         IEnumerable<OrdenCompra> ObtenerOrdenesCompras();
 
+        IEnumerable<OrdenCompra> ObtenerOrdenesCompras(string EstadoFiltrado, int IdProductoFiltrado);
+
         OrdenCompra ObtenerOrdenCompra(int idOrdenCompra);
 
         void AddOrdenCompra(int idEmpleado, int idProducto, int cantidad, DateTime fechaEntrega, int idProveedor);

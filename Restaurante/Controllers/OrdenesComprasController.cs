@@ -4,6 +4,7 @@ using Servicios;
 using Servicios.Interfaces;
 using System.Web.Mvc;
 using Restaurante.ViewModels.OrdenesCompras;
+using System.Collections.Generic;
 
 namespace Restaurante.Controllers
 {
@@ -36,12 +37,32 @@ namespace Restaurante.Controllers
 
         [HttpGet]
         [Route(Name = "OrdenesCompras_Index")]
-        public ActionResult Index()
+        public ActionResult Index(string EstadoFiltrado = "", int IdProductoFiltrado = 0)
         {
             var model = new OrdenesComprasViewModel()
             {
-                OrdenesCompras = _ServicioOrdenCompra.ObtenerOrdenesCompras().Select(x => new OrdenCompraViewItem(x))
+                OrdenesCompras = _ServicioOrdenCompra.ObtenerOrdenesCompras().Select(x => new OrdenCompraViewItem(x)),
+
+                //OrdenesCompras = _ServicioOrdenCompra.ObtenerOrdenesCompras(EstadoFiltrado, IdProductoFiltrado).Select(x => new OrdenCompraViewItem(x)),
+                // Cargo los selectores desplegables para filtrar
+                Estados = new List<SelectListItem> 
+                {
+                    new SelectListItem { Value = "Activa", Text = "Activa" },
+                    new SelectListItem { Value = "Concretada", Text = "Concretada" },
+                    new SelectListItem { Value = "Cancelada", Text = "Cancelada" }
+                },
+                Productos = new SelectList(_ServicioProducto.ObtenerProductos(), "Id", "Descripcion")
             };
+
+            //if (!String.IsNullOrEmpty(EstadoFiltrado))
+            //{
+            //    model.OrdenesCompras.Where(o => o.Estado == EstadoFiltrado);
+            //}
+
+            //if (IdProductoFiltrado > 0)
+            //{
+            //    model.OrdenesCompras.Where(o => o.IdProducto == IdProductoFiltrado);
+            //}
 
             return View(model);
         }
@@ -106,11 +127,11 @@ namespace Restaurante.Controllers
             if (model.IdProducto <= 0)
                 ModelState.AddModelError("IdProducto", "Debe seleccionar un producto.");
 
-            //if (model.IdEmpleado <= 0)
-            //    ModelState.AddModelError("IdEmpleado", "Debe seleccionar un empleado.");
+            if (model.IdEmpleado <= 0)
+                ModelState.AddModelError("IdEmpleado", "Debe seleccionar un empleado.");
 
-            //if (model.IdProveedor <= 0)
-            //    ModelState.AddModelError("IdProveedor", "Debe seleccionar un proveedor.");
+            if (model.IdProveedor <= 0)
+                ModelState.AddModelError("IdProveedor", "Debe seleccionar un proveedor.");
 
             if (model.Cantidad <= 0)
                 ModelState.AddModelError("Cantidad", "La cantidad debe ser mayor a 0.");
@@ -131,6 +152,8 @@ namespace Restaurante.Controllers
                 ModelState.AddModelError("", ex.Message);
             }
 
+            model.Empleados = new SelectList(_ServicioEmpleado.ObtenerEmpleados(), "Id", "Nombre");
+            model.Proveedores = new SelectList(_ServicioProveedor.ObtenerProveedores(model.IdProducto), "Id", "Descripcion");
             return View(model);
         }
 

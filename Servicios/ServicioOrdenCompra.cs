@@ -23,6 +23,31 @@ namespace Servicios
             }
         }
 
+        public IEnumerable<OrdenCompra> ObtenerOrdenesCompras(string EstadoFiltrado, int IdProductoFiltrado)
+        {
+            using (var db = new AppDbContext())
+            {
+                var model = db.OrdenesCompras
+                            .Include(x => x.Empleado)
+                            .Include(x => x.Producto)
+                            .Include(x => x.Proveedor);
+
+                if (!String.IsNullOrEmpty(EstadoFiltrado))
+                {
+                    model.Where(o => o.Estado == EstadoFiltrado);
+                }
+
+                if (IdProductoFiltrado > 0)
+                {
+                    model.Where(o => o.Producto.Id == IdProductoFiltrado);
+                }
+
+                model.ToList();
+
+                return model;
+            }
+        }
+
         public OrdenCompra ObtenerOrdenCompra(int idOrdenCompra)
         {
             using (var db = new AppDbContext())
