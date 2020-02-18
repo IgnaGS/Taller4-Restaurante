@@ -209,7 +209,9 @@
     <Content Include="Views\OrdenesCompras\Cancelar.cshtml" />
     <Content Include="Views\OrdenesCompras\Concretar.cshtml" />
     <Content Include="Views\OrdenesCompras\Index.cshtml" />
-    <Content Include="Views\OrdenesCompras\Nueva.cshtml" />
+    <Content Include="Views\OrdenesCompras\NuevaOrdenSinProducto_bup.cshtml" />
+    <Content Include="Views\OrdenesCompras\NuevaOrdenConProducto.cshtml" />
+    <Content Include="Views\OrdenesCompras\NuevaOrdenSinProducto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,6 +20,16 @@ namespace Servicios
                     .ToList();
             }
         }
+        public IEnumerable<Producto> ObtenerProductosDisponibles()
+        {
+            using (var db = new AppDbContext())
+            {
+                return db
+                    .Productos
+                    .Where(p => p.Disponible.Equals("SI"))
+                    .ToList();
+            }
+        }
 
         public Producto ObtenerProducto(int id)
         {

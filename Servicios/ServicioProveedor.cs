@@ -5,6 +5,7 @@ using Servicios.Interfaces;
 using Servicios.DB;
 using Domain;
 using System.Data.Entity.Migrations;
+using System.Data.Entity;
 
 namespace Servicios
 {
@@ -19,14 +20,25 @@ namespace Servicios
                     .ToList();
             }
         }
+        public IEnumerable<Proveedor> ObtenerProveedores(int IdProducto)
+        {
+            using (var db = new AppDbContext())
+            {
+                return db.Catalogos
+                            .Include(x => x.Proveedor)
+                            .Where(c => c.ProductoId == IdProducto)
+                            .Select(p => p.Proveedor)
+                            .ToList();
+            }
+        }
 
-        public Proveedor ObtenerProveedor(int id)
+        public Proveedor ObtenerProveedor(int IdProveedor)
         {
             using (var db = new AppDbContext())
             {
                 return db
                     .Proveedores
-                    .Find(id);
+                    .Find(IdProveedor);
             }
         }
 

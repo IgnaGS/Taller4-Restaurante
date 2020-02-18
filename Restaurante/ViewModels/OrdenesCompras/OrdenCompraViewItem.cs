@@ -22,7 +22,7 @@ namespace Restaurante.ViewModels.OrdenesCompras
         public OrdenCompraViewItem(OrdenCompra ordenCompra)
         {
             Id = ordenCompra.Id;
-            Empleado = ordenCompra.Empleado.Nombre +" "+ ordenCompra.Empleado.Nombre;
+            Empleado = ordenCompra.Empleado.Nombre +" "+ ordenCompra.Empleado.Apellido;
             IdProducto = ordenCompra.Producto.Id;
             Producto = ordenCompra.Producto.Descripcion;
             Cantidad = ordenCompra.Cantidad;

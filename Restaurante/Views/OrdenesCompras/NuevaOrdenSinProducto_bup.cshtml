@@ -1,7 +1,7 @@
 ﻿@model Restaurante.ViewModels.OrdenesCompras.NuevaOrdenCompraViewModel
 
 @{
-    ViewBag.Title = "Nueva";
+    ViewBag.Title = "NuevaOrdenSinProducto";
 }
 
 @section scripts {
@@ -16,20 +16,11 @@
 
     <div class="row">
         <div class="offset-3 col-6">
-            @using (Html.BeginForm("Nuevo", "Proveedores", FormMethod.Post))
+            @using (Html.BeginForm("NuevaOrdenSinProducto", "OrdenesCompras", FormMethod.Post))
             {
-                <div class="form-group">
-                    <label for="Empleado">Empleado</label>
-                    @Html.DropDownListFor(model => model.IdEmpleado, Model.Empleados)
-                </div>
                 <div class="form-group">
                     <label for="Producto">Producto</label>
                     @Html.DropDownListFor(model => model.IdProducto, Model.Productos)
-                </div>
-                <div class="form-group">
-                    <label for="Cantidad">Cantidad</label>
-                    @Html.TextBoxFor(x => x.Cantidad, new { @class = "form-control", placeholder = "Ingrese la cantidad que desea ordenar" })
-                    @Html.ValidationMessageFor(x => x.Cantidad, "", new { @class = "text-danger" })
                 </div>
                 
                 @Html.ValidationMessage("", new { @class = "text-danger" })

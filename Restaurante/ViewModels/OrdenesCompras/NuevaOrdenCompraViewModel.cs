@@ -7,6 +7,7 @@ namespace Restaurante.ViewModels.OrdenesCompras
     {
         public int IdEmpleado { get; set; }
         public int IdProducto { get; set; }
+        public string Producto { get; set; }
         public int Cantidad { get; set; }
         public DateTime FechaEntrega { get; set; }
         public int IdProveedor { get; set; }

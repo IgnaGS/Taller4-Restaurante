@@ -7,6 +7,8 @@ namespace Servicios.Interfaces
     {
         IEnumerable<Producto> ObtenerProductos();
 
+        IEnumerable<Producto> ObtenerProductosDisponibles();
+
         void AddProducto(string descripcion, decimal precio, int stockInicial, string disponible);
 
         void UpdateProducto(int id, string descripcion, decimal precio, string disponible);

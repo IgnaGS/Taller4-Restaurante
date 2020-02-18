@@ -1,0 +1,64 @@
+﻿@model Restaurante.ViewModels.OrdenesCompras.NuevaOrdenCompraViewModel
+
+@{
+    ViewBag.Title = "NuevaOrdenConProducto";
+}
+
+@section scripts {
+    <script type="text/javascript">
+    </script>
+}
+
+<div class="container">
+    <br />
+    <h4 class="text-center mt-5">
+        Nueva Orden de Compra
+    </h4>
+    <br />
+
+    <div class="row">
+        <div class="offset-3 col-6">
+            @using (Html.BeginForm("NuevaOrdenConProducto", "OrdenesCompras", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.IdProducto)
+                <div class="form-group">
+                    <label for="Proveedor">Producto</label>
+                    <br />
+                    @Model.Producto
+                </div>
+                <div class="form-group">
+                    <label for="Empleado">Empleado</label>
+                    <br />
+                    @Html.DropDownListFor(model => model.IdEmpleado, Model.Empleados)
+                </div>
+                <div class="form-group">
+                    <label for="Proveedor">Proveedor</label>
+                    <br />
+                    @Html.DropDownListFor(model => model.IdProveedor, Model.Proveedores)
+                </div>
+                <div class="form-group">
+                    <label for="Cantidad">Cantidad</label>
+                    <br />
+                    @Html.TextBoxFor(x => x.Cantidad, new { @class = "form-control", placeholder = "Ingrese la cantidad que desea ordenar", @type = "numeric" })
+                    @Html.ValidationMessageFor(x => x.Cantidad, "", new { @class = "text-danger" })
+                </div>
+                <div>
+                    <label for="FechaEntrega">Fecha de entrega</label>
+                    <br />
+                    <input type="date" id="FechaEntrega" name="FechaEntrega" min=@System.DateTime.Now required>
+                    @Html.ValidationMessageFor(x => x.Cantidad, "", new { @class = "text-danger" })
+                </div>
+                <br />
+
+                @Html.ValidationMessage("", new { @class = "text-danger" })
+                <button type="submit" class="btn btn-dark">
+                    Continuar
+                </button>
+                <a class="btn btn-outline-dark"
+                   href="@Url.Action("Index","OrdenesCompras")">
+                    Cancelar
+                </a>
+            }
+        </div>
+    </div>
+</div>

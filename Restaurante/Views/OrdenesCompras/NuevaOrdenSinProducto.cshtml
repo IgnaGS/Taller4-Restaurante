@@ -1,0 +1,38 @@
+﻿@model Restaurante.ViewModels.OrdenesCompras.NuevaOrdenCompraViewModel
+
+@{
+    ViewBag.Title = "NuevaOrdenSinProducto";
+}
+
+@section scripts {
+    <script type="text/javascript">
+    </script>
+}
+
+<div class="container">
+    <h4 class="text-center mt-5">
+        Nueva Orden de Compra
+    </h4>
+
+    <div class="row">
+        <div class="offset-3 col-6">
+            @using (Html.BeginForm("NuevaOrdenSinProducto", "OrdenesCompras", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="Producto">Producto</label>
+                    <br />
+                    @Html.DropDownListFor(model => model.IdProducto, Model.Productos)
+                </div>
+
+                @Html.ValidationMessage("", new { @class = "text-danger" })
+                <button type="submit" class="btn btn-dark">
+                    Continuar
+                </button>
+                <a class="btn btn-outline-dark"
+                   href="@Url.Action("Index","OrdenesCompras")">
+                    Cancelar
+                </a>
+            }
+        </div>
+    </div>
+</div>

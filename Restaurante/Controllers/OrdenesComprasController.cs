@@ -14,6 +14,7 @@ namespace Restaurante.Controllers
         private readonly IServicioOrdenCompra _ServicioOrdenCompra;
         private readonly IServicioProducto _ServicioProducto;
         private readonly IServicioEmpleado _ServicioEmpleado;
+        private readonly IServicioProveedor _ServicioProveedor;
         private readonly IServicioStock _ServicioStock;
 
         #endregion
@@ -25,6 +26,7 @@ namespace Restaurante.Controllers
             _ServicioOrdenCompra = new ServicioOrdenCompra();
             _ServicioProducto = new ServicioProducto();
             _ServicioEmpleado = new ServicioEmpleado();
+            _ServicioProveedor = new ServicioProveedor();
             _ServicioStock = new ServicioStock();
         }
 
@@ -49,42 +51,29 @@ namespace Restaurante.Controllers
         #region Nueva OrdenCompra
 
         [HttpGet]
-        [Route("Nueva", Name = "OrdenesCompras_Nueva")]
-        public ActionResult Nueva()
+        [Route("NuevaOrdenSinProducto", Name = "OrdenesCompras_NuevaOrdenSinProducto")]
+        public ActionResult NuevaOrdenSinProducto()
         {
-            var model = new NuevaOrdenCompraViewModel() 
+            var model = new NuevaOrdenCompraViewModel()
             {
-                Productos = new SelectList(_ServicioProducto.ObtenerProductos(), "Id", "Descripcion"),
-                Empleados = new SelectList(_ServicioEmpleado.ObtenerEmpleados(), "Id", "Nombre")
-            }
+                Productos = new SelectList(_ServicioProducto.ObtenerProductosDisponibles(), "Id", "Descripcion")
+            };
 
             return View(model);
         }
 
         [HttpPost]
-        [Route("Nueva", Name = "OrdenesCompras_Nueva_Post")]
-        public ActionResult Nueva(NuevaOrdenCompraViewModel model)
+        [Route("NuevaOrdenSinProducto", Name = "OrdenesCompras_NuevaSinProducto_Post")]
+        public ActionResult NuevaOrdenSinProducto(NuevaOrdenCompraViewModel model)
         {
-            //if (string.IsNullOrWhiteSpace(model.Descripcion))
-            //    ModelState.AddModelError("Descripción", "Debe ingresar la descripción del proveedor.");
-
-            //if (string.IsNullOrWhiteSpace(model.Direccion))
-            //    ModelState.AddModelError("Direccion", "Debe ingresar la dirección del proveedor.");
-
-            //if (string.IsNullOrWhiteSpace(model.Mail))
-            //    ModelState.AddModelError("Mail", "Debe ingresar el correo electrónico del proveedor.");
-
-            //if (string.IsNullOrWhiteSpace(model.Telefono))
-            //    ModelState.AddModelError("Telefono", "Debe ingresar el teléfono del proveedor.");
-
-            //if (string.IsNullOrWhiteSpace(model.Disponible))
-            //    ModelState.AddModelError("Disponible", "Debe seleccionar si el OrdenCompra estará disponible o no.");
+            if (model.IdProducto <= 0)
+                ModelState.AddModelError("IdProducto", "Debe seleccionar un producto.");
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    return RedirectToAction("NuevaOrdenConProducto", new { model.IdEmpleado, model.IdProducto, model.Cantidad });
+                    return RedirectToAction("NuevaOrdenConProducto", new { model.IdProducto });
                 }
             }
             catch (Exception ex)
@@ -97,41 +86,44 @@ namespace Restaurante.Controllers
 
         [HttpGet]
         [Route("NuevaOrdenConProducto", Name = "OrdenesCompras_NuevaConProducto")]
-        public ActionResult NuevaOrdenConProducto(int IdEmpleado, int IdProducto, int Cantidad)
+        public ActionResult NuevaOrdenConProducto(int IdProducto)
         {
             var model = new NuevaOrdenCompraViewModel()
             {
-                Productos = new SelectList(_ServicioProducto.ObtenerProductos(), "Id", "Descripcion"),
-                Empleados = new SelectList(_ServicioEmpleado.ObtenerEmpleados(), "Id", "Nombre")
-            }
+                IdProducto = IdProducto,
+                Producto = _ServicioProducto.ObtenerProducto(IdProducto).Descripcion,
+                Empleados = new SelectList(_ServicioEmpleado.ObtenerEmpleados(), "Id", "Nombre"),
+                Proveedores = new SelectList(_ServicioProveedor.ObtenerProveedores(IdProducto), "Id", "Descripcion")
+            };
 
             return View(model);
         }
 
         [HttpPost]
-        [Route("NuevaOrdenConProducto", Name = "OrdenesCompras_Nueva_Post")]
+        [Route("NuevaOrdenConProducto", Name = "OrdenesCompras_NuevaConProducto_Post")]
         public ActionResult NuevaOrdenConProducto(NuevaOrdenCompraViewModel model)
         {
-            //if (string.IsNullOrWhiteSpace(model.Descripcion))
-            //    ModelState.AddModelError("Descripción", "Debe ingresar la descripción del proveedor.");
+            if (model.IdProducto <= 0)
+                ModelState.AddModelError("IdProducto", "Debe seleccionar un producto.");
 
-            //if (string.IsNullOrWhiteSpace(model.Direccion))
-            //    ModelState.AddModelError("Direccion", "Debe ingresar la dirección del proveedor.");
+            //if (model.IdEmpleado <= 0)
+            //    ModelState.AddModelError("IdEmpleado", "Debe seleccionar un empleado.");
 
-            //if (string.IsNullOrWhiteSpace(model.Mail))
-            //    ModelState.AddModelError("Mail", "Debe ingresar el correo electrónico del proveedor.");
+            //if (model.IdProveedor <= 0)
+            //    ModelState.AddModelError("IdProveedor", "Debe seleccionar un proveedor.");
 
-            //if (string.IsNullOrWhiteSpace(model.Telefono))
-            //    ModelState.AddModelError("Telefono", "Debe ingresar el teléfono del proveedor.");
+            if (model.Cantidad <= 0)
+                ModelState.AddModelError("Cantidad", "La cantidad debe ser mayor a 0.");
 
-            //if (string.IsNullOrWhiteSpace(model.Disponible))
-            //    ModelState.AddModelError("Disponible", "Debe seleccionar si el OrdenCompra estará disponible o no.");
+            if (model.FechaEntrega <= System.DateTime.Now)
+                ModelState.AddModelError("FechaEntrega", "La fecha de entrega debe ser posterior a hoy.");
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    return RedirectToAction("NuevaOrdenConProducto", new { model.IdEmpleado, model.IdProducto, model.Cantidad });
+                    _ServicioOrdenCompra.AddOrdenCompra(model.IdEmpleado, model.IdProducto, model.Cantidad, model.FechaEntrega, model.IdProveedor);
+                    return RedirectToAction("Index");
                 }
             }
             catch (Exception ex)

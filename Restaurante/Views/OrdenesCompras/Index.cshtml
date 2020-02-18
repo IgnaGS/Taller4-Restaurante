@@ -14,15 +14,17 @@
         Lista de Ordenes de Compras
     </h4>
 
+    <br />
     <div class="row my-5">
         <div class="col-2">
             <a class="btn btn-dark form-control text-right"
-               href="@Url.Action("Nueva","OrdenesCompras")">
+               href="@Url.Action("NuevaOrdenSinProducto","OrdenesCompras")">
                 @*Acá se llama a la vista para crear una Orden de Compra*@
                 Nueva Orden de Compra
             </a>
         </div>
     </div>
+    <br />
 
     @if (Model.OrdenesCompras.Any())
     {
@@ -67,20 +69,20 @@
                                             Cancelar
                                         </a>
                                     </td>
-                                   /* <td>
-                                        <a class="btn btn-dark form-control text-right"
-                                           href="@Url.Action("Concretar", "OrdenesCompras", new { idOrdenCompra = OrdenCompra.Id })">
-                                            @*Acá se llama al controlador para concretar la Orden de Compra*@
-                                            Concretar
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-dark form-control text-right"
-                                           href="@Url.Action("Cancelar", "OrdenesCompras", new { idOrdenCompra = OrdenCompra.Id })">
-                                            @*Acá se llama al controlador para cancelar la Orden de Compra*@
-                                            Cancelar
-                                        </a>
-                                    </td> */
+                                    /* <td>
+                                         <a class="btn btn-dark form-control text-right"
+                                            href="@Url.Action("Concretar", "OrdenesCompras", new { idOrdenCompra = OrdenCompra.Id })">
+                                             @*Acá se llama al controlador para concretar la Orden de Compra*@
+                                             Concretar
+                                         </a>
+                                     </td>
+                                     <td>
+                                         <a class="btn btn-dark form-control text-right"
+                                            href="@Url.Action("Cancelar", "OrdenesCompras", new { idOrdenCompra = OrdenCompra.Id })">
+                                             @*Acá se llama al controlador para cancelar la Orden de Compra*@
+                                             Cancelar
+                                         </a>
+                                     </td> */
                                 }
                             </tr>
                         }
