@@ -36,12 +36,15 @@ namespace Restaurante.Controllers
         #region Index
 
         [HttpGet]
-        [Route(Name = "OrdenesCompras_Index")]
-        public ActionResult Index(string EstadoFiltrado = "", int IdProductoFiltrado = 0)
+        public ActionResult Index(string EstadoSeleccionado = "", int IdProductoSeleccionado = 0)
         {
             var model = new OrdenesComprasViewModel()
             {
-                OrdenesCompras = _ServicioOrdenCompra.ObtenerOrdenesCompras().Select(x => new OrdenCompraViewItem(x)),
+                OrdenesCompras = _ServicioOrdenCompra
+                    .ObtenerOrdenesCompras()
+                    .Where(x => (string.IsNullOrEmpty(EstadoSeleccionado) || x.Estado == EstadoSeleccionado) &&
+                    (IdProductoSeleccionado == 0) || x.Producto.Id == IdProductoSeleccionado)
+                    .Select(x => new OrdenCompraViewItem(x)),
 
                 //OrdenesCompras = _ServicioOrdenCompra.ObtenerOrdenesCompras(EstadoFiltrado, IdProductoFiltrado).Select(x => new OrdenCompraViewItem(x)),
                 // Cargo los selectores desplegables para filtrar
@@ -51,7 +54,9 @@ namespace Restaurante.Controllers
                     new SelectListItem { Value = "Concretada", Text = "Concretada" },
                     new SelectListItem { Value = "Cancelada", Text = "Cancelada" }
                 },
-                Productos = new SelectList(_ServicioProducto.ObtenerProductos(), "Id", "Descripcion")
+                Productos = new SelectList(_ServicioProducto.ObtenerProductos(), "Id", "Descripcion"),
+                EstadoSeleccionado = EstadoSeleccionado,
+                IdProductoSeleccionado = IdProductoSeleccionado
             };
 
             //if (!String.IsNullOrEmpty(EstadoFiltrado))
